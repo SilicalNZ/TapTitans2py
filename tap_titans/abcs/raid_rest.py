@@ -1,6 +1,7 @@
 import abc
 from dataclasses import dataclass
 
+from tap_titans.models.code import ClanCode
 from tap_titans.utils.base import BaseModel
 
 
@@ -15,7 +16,7 @@ __all__ = (
 
 class SubscribeRespOK(BaseModel):
     token: str
-    code: str
+    code: ClanCode
 
 
 class SubscribeRespRefused(BaseModel):
@@ -24,8 +25,8 @@ class SubscribeRespRefused(BaseModel):
 
 
 class SubscribeResp(BaseModel):
-    ok: SubscribeRespOK
-    refused: SubscribeRespRefused
+    ok: tuple[SubscribeRespOK, ...]
+    refused: tuple[SubscribeRespRefused, ...]
 
 
 @dataclass

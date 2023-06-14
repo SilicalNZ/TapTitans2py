@@ -2,7 +2,7 @@ from datetime import datetime
 
 from tap_titans.models import model_type
 from tap_titans.models.player import Player
-from tap_titans.models.code import ClanCode
+from tap_titans.models.code import ClanCode, PlayerCode
 from tap_titans.utils.base import BaseModel
 
 
@@ -43,7 +43,7 @@ class RaidAttackCardDamageLog(BaseModel):
 
 class RaidAttackCardDamage(BaseModel):
     titan_index: int
-    card_id: model_type.Card | None
+    id: model_type.Card | None
     damage_log: tuple[RaidAttackCardDamageLog, ...]
 
 
@@ -60,6 +60,7 @@ class RaidAttackPlayer(Player):
 
 class RaidAttack(BaseModel):
     clan_code: ClanCode
+    raid_id: int
     player: RaidAttackPlayer
     attack_log: RaidAttackLog
     raid_state: RaidAttackRaidState

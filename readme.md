@@ -13,3 +13,4 @@ python3 -m pip install -U git+https://github.com/SilicalNZ/TapTitans2py
 - asyncio
 - aiohttp
 - PyNaCl
+- pydantic

@@ -1,5 +1,5 @@
 from tap_titans.models import model_type
-from tap_titans.models.code import RaidSummaryCode
+from tap_titans.models.code import PlayerCode
 from tap_titans.utils.base import BaseModel
 
 
@@ -17,7 +17,7 @@ class Log(BaseModel):
 class RaidSummary(BaseModel):
     S = tuple['RaidSummary', ...]
 
-    code: RaidSummaryCode
+    player_code: PlayerCode
     log: tuple[Log, ...]
 
 

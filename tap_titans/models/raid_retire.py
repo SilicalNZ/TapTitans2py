@@ -8,6 +8,7 @@ from tap_titans.utils.base import BaseModel
 
 class RaidRetire(BaseModel):
     clan_code: ClanCode
+    raid_id: int
     retired_at: datetime
     player: Player
     keys_remaining: int

@@ -11,6 +11,8 @@ _BASE_URL = "https://tt2-public.gamehivegames.com/api/raid"
 
 @dataclass
 class RaidRestAPI(abc.RaidRestABC):
+    auth: str
+
     async def _request(
             self,
             *,
@@ -19,7 +21,7 @@ class RaidRestAPI(abc.RaidRestABC):
             payload: None | dict = None,
             params: None | dict = None,
     ) -> dict:
-        async with aiohttp.ClientSession(raise_for_status=True) as session:
+        async with aiohttp.ClientSession(raise_for_status=True, headers={"API-Authenticate": self.auth}) as session:
             async with session.request(
                     method.value,
                     f"{_BASE_URL}{endpoint}",
@@ -32,7 +34,7 @@ class RaidRestAPI(abc.RaidRestABC):
         result = await self._request(
             method=Method.POST,
             endpoint="/subscribe",
-            payload = {
+            payload={
                 "player_tokens": player_tokens,
             },
         )

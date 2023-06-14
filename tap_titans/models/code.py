@@ -8,7 +8,3 @@ class PlayerCode(Code):
 
 class ClanCode(Code):
     pass
-
-
-class RaidSummaryCode(Code):
-    pass

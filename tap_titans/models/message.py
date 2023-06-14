@@ -6,6 +6,6 @@ class Message(BaseModel):
     message: str
 
 
-class Room(BaseModel):
-    room: ClanCode
+class ClanRemoved(BaseModel):
+    clan_code: ClanCode
     namespace: str
