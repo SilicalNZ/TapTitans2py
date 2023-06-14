@@ -6,7 +6,7 @@ from tap_titans.abcs import raid_rest as abc
 from tap_titans.utils.http_method import Method
 
 
-_BASE_URL = "https://tt2-public.gamehivegames.com/api/raid"
+_BASE_URL = "https://tt2-public.gamehivegames.com/raid"
 
 
 @dataclass
@@ -21,13 +21,14 @@ class RaidRestAPI(abc.RaidRestABC):
             payload: None | dict = None,
             params: None | dict = None,
     ) -> dict:
-        async with aiohttp.ClientSession(raise_for_status=True, headers={"API-Authenticate": self.auth}) as session:
+        async with aiohttp.ClientSession(headers={"API-Authenticate": self.auth}) as session:
             async with session.request(
                     method.value,
                     f"{_BASE_URL}{endpoint}",
                     json=payload,
                     params=params,
             ) as resp:
+                print(await resp.text())
                 return await resp.json()
 
     async def subscribe(self, player_tokens: list[str]) -> abc.SubscribeResp:

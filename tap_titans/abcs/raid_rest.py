@@ -16,7 +16,7 @@ __all__ = (
 
 class SubscribeRespOK(BaseModel):
     token: str
-    code: ClanCode
+    clan_code: ClanCode
 
 
 class SubscribeRespRefused(BaseModel):

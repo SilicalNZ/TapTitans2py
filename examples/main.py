@@ -17,8 +17,22 @@ async def test(anything=None):
     print(anything)
 
 
+# We have to subscribe after we connect
+async def connected(anything=None):
+    print("Connected")
+
+    r = RaidRestAPI(AUTH_TOKEN)
+
+    resp = await r.subscribe(PLAYER_TOKENS)
+    if len(resp.refused) > 0:
+        print("Failed to subscribe to clan with reason:", resp.refused[0].reason)
+    else:
+        print("Subscribed to clan:", resp.ok[0].clan_code)
+
+
+
 wsc = WebsocketClient(
-    connected=test,
+    connected=connected,
     disconnected=test,
     error=test,
     connection_error=test,
@@ -35,20 +49,4 @@ wsc = WebsocketClient(
 )
 
 
-async def start():
-    r = RaidRestAPI(AUTH_TOKEN)
-
-    # We want to subscribe after we connect, so we receive subscribed events
-    async def start_later():
-        await asyncio.sleep(5)
-        resp = await r.subscribe(PLAYER_TOKENS)
-        if len(resp.refused) > 0:
-            print("Failed to subscribe to clan with reason:", resp.refused[0].reason)
-        else:
-            print("Subscribed to clan:", resp.ok[0].code)
-
-    await asyncio.gather(start_later())
-    await wsc.connect(AUTH_TOKEN)
-
-
-asyncio.run(start())
+asyncio.run(wsc.connect(AUTH_TOKEN))

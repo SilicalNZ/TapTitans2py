@@ -6,7 +6,7 @@ from pydantic import validate_arguments
 from tap_titans.models import models
 
 
-API_URL = "wss://tt2-public.gamehivegames.com/raid"
+API_URL = "wss://tt2-public.gamehivegames.com"
 
 
 class WebsocketClient:
@@ -47,13 +47,14 @@ class WebsocketClient:
 
         for key, value in events.items():
             if value is not None:
-                self.sio.on(key.value)(validate_arguments(value) if setting_validate_arguments else value)
+                self.sio.on(key.value, namespace="/raid")(validate_arguments(value) if setting_validate_arguments else value)
 
     async def connect(self, auth: str):
         await self.sio.connect(
             API_URL,
             transports=["websocket"],
             headers={"API-Authenticate": auth},
-            socketio_path="api"
+            socketio_path="api",
+            namespaces=["/raid"],
         )
         await self.sio.wait()
