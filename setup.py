@@ -8,12 +8,12 @@ with open("requirements.txt") as fp:
 
 setuptools.setup(
     name="TapTitans2py",
-    version="0.0.1",
+    version="1.0.0",
     license="Anyone may use this, but the origin (this project) must be credited",
     url="https://gihtub.com/SilicalNZ/TapTitans2py",
     description="A Pythonic wrapper for the Tap Titans 2 API",
     long_description="A Pythonic wrapper for the Tap Titans 2 API",
     author="SilicalNZ@gmail.com",
     install_requires=requirements,
-    packages=["TapTitans2py.abcs", "TapTitans2py.handlers", "TapTitans2py.models", "TapTitans2py.providers", "TapTitans2py.utils"],
+    packages=["tap_titans.abcs", "tap_titans.handlers", "tap_titans.models", "tap_titans.providers", "tap_titans.utils"],
 )
