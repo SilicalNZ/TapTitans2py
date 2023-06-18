@@ -10,4 +10,4 @@ class RaidEnd(BaseModel):
     raid_id: int
     ended_at: datetime
     keys_remaining: int
-    raid_summary: RaidSummary.S
+    raid_summary: tuple[RaidSummary, ...]

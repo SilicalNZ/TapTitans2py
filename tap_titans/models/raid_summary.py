@@ -15,8 +15,6 @@ class Log(BaseModel):
 
 
 class RaidSummary(BaseModel):
-    S = tuple['RaidSummary', ...]
-
     player_code: PlayerCode
     log: tuple[Log, ...]
 

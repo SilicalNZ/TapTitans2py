@@ -9,7 +9,7 @@ python3 -m pip install -U git+https://github.com/SilicalNZ/TapTitans2py
 ```
 
 ## Requirements
-- Python 3.10
+- Python >=3.10
 - asyncio
 - aiohttp
 - PyNaCl

@@ -12,4 +12,4 @@ class RaidRetire(BaseModel):
     retired_at: datetime
     player: Player
     keys_remaining: int
-    raid_summary: RaidSummary.S
+    raid_summary: tuple[RaidSummary, ...]
