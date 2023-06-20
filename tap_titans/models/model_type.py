@@ -72,7 +72,7 @@ class Card(str, Enum):
     Radioactivity = "Disease"
     RavenousSwarm = "Swarm"
     RuinousRain = "RuinousRust"
-    CorrosiveBubbles = "PowerBubbles"
+    CorrosiveBubbles = "PowerBubble"
     Maelstrom = "RuneAttack"
     CrushingInstinct = "ExecutionersAxe"
     InsanityVoid = "CrushingVoid"
@@ -84,9 +84,16 @@ class Card(str, Enum):
     AncestralFavor = "BurstBoost"
     GraspingVines = "LimbSupport"
     TotemOfPower = "TotemFairySkill"
-    SkeletalSmash = "TeamTactics"
-    SpinalTap = "SpinalTap"
+    TeamTactics = "TeamTactics"
+    SkeletalSmash = "SpinalTap"
     AstralEcho = "AstralEcho"
+
+    # Placeholder for api changes
+    UNKNOWN = "UNKNOWN"
+
+    @classmethod
+    def _missing_(cls, value: object):
+        return cls(cls.UNKNOWN)
 
 
 class Enemy(str, Enum):
@@ -121,8 +128,8 @@ class TargetStatePart(Enum):
     Head = "Head"
     Chest = "ChestUpper"
     ArmRight = "ArmUpperRight"
-    ArmULeft = "ArmUpperLeft"
+    ArmLeft = "ArmUpperLeft"
     LegRight = "LegUpperRight"
     LegLeft = "LegUpperLeft"
     HandRight = "HandRight"
-    HandLef = "HandLef"
+    HandLeft = "HandLeft"
