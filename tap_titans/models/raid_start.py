@@ -16,16 +16,7 @@ class RaidStartRaidTitan(BaseModel):
     enemy_name: model_type.EnemyName
     enemy_id: model_type.Enemy
     total_hp: int
-    parts: tuple[
-        RaidStartRaidTitanPart,
-        RaidStartRaidTitanPart,
-        RaidStartRaidTitanPart,
-        RaidStartRaidTitanPart,
-        RaidStartRaidTitanPart,
-        RaidStartRaidTitanPart,
-        RaidStartRaidTitanPart,
-        RaidStartRaidTitanPart,
-    ]  # [8]RaidStartRaidTitanPart
+    parts: tuple[RaidStartRaidTitanPart, ...]
 
 
 class RaidStartRaid(Raid):

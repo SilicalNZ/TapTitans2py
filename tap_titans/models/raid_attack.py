@@ -14,16 +14,7 @@ class RaidAttackRaidStateCurrentPart(BaseModel):
 class RaidAttackRaidStateCurrent(BaseModel):
     current_hp: int
     enemy_id: model_type.Enemy
-    parts: tuple[
-        RaidAttackRaidStateCurrentPart,
-        RaidAttackRaidStateCurrentPart,
-        RaidAttackRaidStateCurrentPart,
-        RaidAttackRaidStateCurrentPart,
-        RaidAttackRaidStateCurrentPart,
-        RaidAttackRaidStateCurrentPart,
-        RaidAttackRaidStateCurrentPart,
-        RaidAttackRaidStateCurrentPart,
-    ]  # [8]RaidAttackRaidStateCurrentPart
+    parts: tuple[RaidAttackRaidStateCurrentPart, ...]
 
 
 class RaidAttackRaidState(BaseModel):
@@ -55,7 +46,7 @@ class RaidAttackLog(BaseModel):
 
 class RaidAttackPlayer(Player):
     raid_level: int
-    attack_remaining: int
+    attacks_remaining: int
 
 
 class RaidAttack(BaseModel):
