@@ -48,8 +48,8 @@ class RaidStartRaid(Raid):
 
 class RaidStartMoraleBonus(BaseModel):
     # Tidy this up when it is fixed
-    _BonusType: Optional[str] = Field(default=None)
-    _BonusAmount: Optional[int] = Field(default=None)
+    _BonusType: Optional[str] = Field(default=None, alias="BonusType")
+    _BonusAmount: Optional[int] = Field(default=None, alias="BonusAmount")
     _bonus_type: Optional[str] = Field(default=None, alias="bonus_type")  # Change to enum when it is documented
     _bonus_amount: Optional[int] = Field(default=None, alias="bonus_amount")
 
