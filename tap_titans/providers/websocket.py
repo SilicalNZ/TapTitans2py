@@ -11,8 +11,6 @@ API_URL = "wss://tt2-public.gamehivegames.com"
 _empty_coro = Coroutine[None, None, None]
 
 
-
-
 class WebsocketClient:
     def __init__(
             self,
