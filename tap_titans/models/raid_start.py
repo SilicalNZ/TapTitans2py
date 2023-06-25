@@ -25,8 +25,8 @@ class RaidStartRaid(Raid):
 
 
 class RaidStartMoraleBonus(BaseModel):
-    BonusType: str
-    BonusAmount: int
+    bonus_type: str
+    bonus_amount: int
 
 
 class RaidStartMorale(BaseModel):
