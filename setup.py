@@ -1,14 +1,13 @@
 import setuptools
 
 
-requirements = []
 with open("requirements.txt") as fp:
     requirements = fp.read().splitlines()
 
 
 setuptools.setup(
     name="TapTitans2py",
-    version="1.2.1",
+    version="1.3.0",
     license="Anyone may use this, but the origin (this project) must be credited",
     url="https://gihtub.com/SilicalNZ/TapTitans2py",
     description="A Pythonic wrapper for the Tap Titans 2 API",
