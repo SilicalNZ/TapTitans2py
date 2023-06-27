@@ -8,6 +8,7 @@ A drop in library to provide requests and responses to the various Tap Titans 2 
 - Easy to use with an object-oriented design
 - Cross version compatibility. 
 - Interfaces for all TapTitans2 APIs; SocketIO, Rest, PublicAPI and Manual Data
+- Fully annotated using python typehinting
 
 ## Getting Started
 
