@@ -11,10 +11,10 @@ class RaidTargetTitanState(BaseModel):
 
 class RaidTargetTitan(BaseModel):
     enemy_id: Enemy
-    state: str
+    state: tuple[RaidTargetTitanState, ...]
 
 
 class RaidTarget(BaseModel):
     raid_id: int
     player: Player
-    titan_target: RaidTargetTitan
+    titan_target: tuple[RaidTargetTitan, ...]

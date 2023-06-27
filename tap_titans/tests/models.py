@@ -32,7 +32,7 @@ class ModelTest(TestCase):
         models.RaidCycleReset(**_sub_cycle)
 
     def test_raid_target(self):
-        models.RaidCycleReset(**_raid_cycle_reset)
+        models.RaidTarget(**_raid_target)
 
 
 _clan_unsub = {
