@@ -9,7 +9,7 @@ A drop in library to provide requests and responses to the various Tap Titans 2 
 - Cross version compatibility. 
 - Interfaces for all TapTitans2 APIs; SocketIO, Rest, PublicAPI and Manual Data
 
-# Getting Started
+## Getting Started
 
 - You need to request a Player Token of a clan Master or GrandMaster. They can create one for you by going to the `Settings -> Player API Tokens` in the app
 - You will need to join the [GameHive Discord](https://discord.com/invite/gamehive) and ask for an API Token in the channel #app-token-request.
@@ -71,7 +71,7 @@ asyncio.run(websocket.connect(AUTH_TOKEN))
 ```
 Find more examples in the [examples directory](https://github.com/SilicalNZ/TapTitans2py/blob/master/examples/main.py)
 
-# Getting Help
+## Getting Help
 
 - Report bugs in the [issue tracker](https://github.com/SilicalNZ/TapTitans2py/issues)
 - Reach out on Discord to the maintainer `silical`
