@@ -124,7 +124,7 @@ class TargetState(Enum):
     Checked = 2
 
 
-class TargetStatePart(Enum):
+class TargetStatePart(str, Enum):
     Head = "Head"
     Chest = "ChestUpper"
     ArmRight = "ArmUpperRight"
@@ -133,3 +133,19 @@ class TargetStatePart(Enum):
     LegLeft = "LegUpperLeft"
     HandRight = "HandRight"
     HandLeft = "HandLeft"
+
+
+class TitanRaidBonus(str, Enum):
+    RaidAttackDuration = "RaidAttackDuration"
+    AfflictedDamage = "AfflictedDamage"
+    AfflictedDuration = "AfflictedDuration"
+    LimbDamage = "LimbDamage"
+    AllRaidDamage = "AllRaidDamage"
+    SupportEffect = "SupportEffect"
+    AfflictedChance = "AfflictedChance"
+    ChestDamage = "ChestDamage"
+    HeadDamage = "HeadDamage"
+    BodyDamage = "BodyDamage"
+    ArmorDamage = "ArmorDamage"
+    BurstDamage = "BurstDamage"
+    BurstChance = "BurstChance"

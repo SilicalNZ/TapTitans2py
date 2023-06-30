@@ -1,7 +1,6 @@
 from typing import Coroutine, Any, Callable
 
 import socketio
-from pydantic import validate_arguments
 
 from tap_titans.models import models
 
@@ -25,7 +24,7 @@ class WebsocketClient:
             raid_end: Callable[[models.RaidEnd], _empty_coro] | None = None,
             raid_retire: Callable[[models.RaidRetire], _empty_coro] | None = None,
             raid_cycle_reset: Callable[[models.RaidCycleReset], _empty_coro] | None = None,
-            clan_added_cycle: Callable[[models.RaidCycleReset], _empty_coro] | None = None,
+            clan_added_cycle: Callable[[models.ClanAddedRaidCycleReset], _empty_coro] | None = None,
             raid_target_changed: Callable[[models.RaidTarget], _empty_coro] | None = None,
             setting_validate_arguments: bool = True,
             **kwargs,
@@ -55,7 +54,7 @@ class WebsocketClient:
             models.Event.RAID_END: _converter(raid_end, models.RaidEnd),
             models.Event.RAID_RETIRE: _converter(raid_retire, models.RaidRetire),
             models.Event.RAID_CYCLE_RESET: _converter(raid_cycle_reset, models.RaidCycleReset),
-            models.Event.CLAN_ADDED_CYCLE: _converter(clan_added_cycle, models.RaidCycleReset),
+            models.Event.CLAN_ADDED_CYCLE: _converter(clan_added_cycle, models.ClanAddedRaidCycleReset),
             models.Event.RAID_TARGET_CHANGED: _converter(raid_target_changed, models.RaidTarget),
         }
 

@@ -7,7 +7,7 @@ from tap_titans.models import models
 
 class ModelTest(TestCase):
     def test_raid_unsub_clan(self):
-        models.ClanRemoved(**_clan_unsub)
+        models.ClanRemoved(**json.loads(_clan_unsub))
 
     def test_raid_attack(self):
         models.RaidAttack(**json.loads(_raid_attack))
@@ -20,25 +20,26 @@ class ModelTest(TestCase):
         models.RaidStart(**json.loads(_raid_sub_start))
 
     def test_raid_end(self):
-        models.RaidEnd(**_raid_end)
+        models.RaidEnd(**json.loads(_raid_end))
 
     def test_raid_retire(self):
-        models.RaidRetire(**_raid_retire)
+        models.RaidRetire(**json.loads(_raid_retire))
 
     def test_raid_cycle_reset(self):
-        models.RaidCycleReset(**_raid_cycle_reset)
+        models.RaidCycleReset(**json.loads(_raid_cycle_reset))
 
     def test_raid_sub_cycle(self):
-        models.RaidCycleReset(**_sub_cycle)
+        models.RaidCycleReset(**json.loads(_sub_cycle))
 
     def test_raid_target(self):
-        models.RaidTarget(**_raid_target)
+        models.RaidTarget(**json.loads(_raid_target))
 
 
-_clan_unsub = {
+_clan_unsub = '''{
     "clan_code": "string",
-    "namespace": "string"
-}
+    "namespace": "string",
+    "token": "b5507016-7da2-4777-a161-1e8042a6a377"
+}'''
 
 _raid_attack = '''{"attack_log": {"attack_datetime": "2023-06-25T12:04:20Z", "cards_damage": [
     {"titan_index": 0, "id": null, "damage_log": [{"id": "ArmorLegUpperRight", "value": 9165775}]},
@@ -69,7 +70,8 @@ _raid_attack = '''{"attack_log": {"attack_datetime": "2023-06-25T12:04:20Z", "ca
 
 _raid_sub_start = '''{"clan_code": "test", "raid_id": 123, "keys_remaining": 1,
                    "morale": {"bonus": {"BonusType": "AllRaidDamage", "BonusAmount": 0.341}, "used": 13695},
-                   "player": {}, "raid": {"spawn_sequence": ["Klonk", "Klonk", "Takedar", "Klonk", "Takedar", "Priker"],
+                   "player": {"name": "string", "player_code": "string"}, 
+                   "raid": {"spawn_sequence": ["Klonk", "Klonk", "Takedar", "Klonk", "Takedar", "Priker"],
                                           "tier": "9999", "level": "55", "titans": [
             {"enemy_id": "Enemy2", "total_hp": 4070000000.0,
              "parts": [{"part_id": "BodyHead", "total_hp": 1465200000.0, "cursed": false},
@@ -131,7 +133,7 @@ _raid_sub_start = '''{"clan_code": "test", "raid_id": 123, "keys_remaining": 1,
                                           "area_buffs": [{"bonus_type": "ArmorDamage", "bonus_amount": 0.25}]},
                    "start_at": "2023-06-25T12:03:02.453358"}'''
 
-_raid_end = {
+_raid_end = '''{
     "clan_code": "string",
     "raid_id": 0,
     "ended_at": "2019-08-24T14:15:22Z",
@@ -139,6 +141,9 @@ _raid_end = {
     "raid_summary": [
         {
             "player_code": "string",
+            "name": "string",
+            "num_attacks": 0,
+            "total_damage": 0,
             "log": [
                 {
                     "enemy_id": "Enemy1",
@@ -153,8 +158,9 @@ _raid_end = {
             ]
         }
     ]
-}
-_raid_retire = {
+}'''
+
+_raid_retire = '''{
     "clan_code": "string",
     "raid_id": 0,
     "retired_at": "2019-08-24T14:15:22Z",
@@ -166,6 +172,9 @@ _raid_retire = {
     "raid_summary": [
         {
             "player_code": "string",
+            "name": "string",
+            "num_attacks": 0,
+            "total_damage": 0,
             "log": [
                 {
                     "enemy_id": "Enemy1",
@@ -180,15 +189,13 @@ _raid_retire = {
             ]
         }
     ]
-}
+}'''
 
-_raid_cycle_reset = {
+_raid_cycle_reset = '''{
     "clan_code": "string",
     "raid_id": 0,
-    "raid": {
-        "tier": 0,
-        "level": 0
-    },
+    "started_at": "2019-08-24T14:15:22Z",
+    "raid_started_at": "2019-08-24T14:15:22Z",
     "next_reset_at": "2019-08-24T14:15:22Z",
     "card_bonuses": [
         {
@@ -196,29 +203,30 @@ _raid_cycle_reset = {
             "value": 0
         }
     ]
-}
+}'''
 
-_sub_cycle = {
+_sub_cycle = '''{
     "clan_code": "string",
     "raid_id": 0,
     "raid": {
-        "tier": 0,
-        "level": 0
-    },
-    "next_reset_at": "2019-08-24T14:15:22Z",
-    "card_bonuses": [
-        {
-            "id": "TeamTacticsClanMoraleBoost",
-            "value": 0
-        }
-    ]
-}
-
-_raid_target = {
-    "raid_id": 0,
-    "player": {
-        "name": "string",
-        "player_code": "string"
+        "level": "string",
+        "tier": "string",
+        "spawn_sequence": [
+            "Lojak"
+        ],
+        "titans": [
+            {
+                "enemy_name": "Lojak",
+                "enemy_id": "Enemy1",
+                "total_hp": 0,
+                "parts": [
+                    {
+                        "part_id": "ArmorLegUpperRight",
+                        "total_hp": 0
+                    }
+                ]
+            }
+        ]
     },
     "titan_target": [
         {
@@ -230,5 +238,29 @@ _raid_target = {
                 }
             ]
         }
+    ],
+    "raid_started_at": "2019-08-24T14:15:22Z",
+    "next_reset_at": "2019-08-24T14:15:22Z",
+    "card_bonuses": [
+        {
+            "id": "TeamTacticsClanMoraleBoost",
+            "value": 0
+        }
     ]
-}
+}'''
+
+_raid_target = '''{
+    "clan_code": "string",
+    "raid_id": 0,
+    "updated_at": "2019-08-24T14:15:22Z",
+    "player": {
+        "name": "string",
+        "player_code": "string"
+    },
+    "state": [
+        {
+            "id": "Head",
+            "state": 0
+        }
+    ]
+}'''

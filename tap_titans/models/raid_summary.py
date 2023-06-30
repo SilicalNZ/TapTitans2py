@@ -16,8 +16,7 @@ class Log(BaseModel):
 
 class RaidSummary(BaseModel):
     player_code: PlayerCode
+    name: str
+    num_attacks: int
+    total_damage: int
     log: tuple[Log, ...]
-
-
-
-
