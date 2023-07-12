@@ -48,18 +48,18 @@ class RaidStartRaid(Raid):
 
 class RaidStartMoraleBonus(BaseModel):
     # Tidy this up when it is fixed
-    _BonusType: Optional[str] = Field(default=None, alias="BonusType")
-    _BonusAmount: Optional[int] = Field(default=None, alias="BonusAmount")
-    _bonus_type: Optional[str] = Field(default=None, alias="bonus_type")  # Change to enum when it is documented
-    _bonus_amount: Optional[int] = Field(default=None, alias="bonus_amount")
+    transition_BonusType: Optional[str] = Field(default=None, alias="BonusType")
+    transition_BonusAmount: Optional[float] = Field(default=None, alias="BonusAmount")
+    transition_bonus_type: Optional[str] = Field(default=None, alias="bonus_type")  # Change to enum when it is documented
+    transition_bonus_amount: Optional[float] = Field(default=None, alias="bonus_amount")
 
     @property
     def bonus_type(self) -> str:
-        return self._BonusType or self._bonus_type
+        return self.transition_BonusType or self.transition_bonus_type
 
     @property
-    def bonus_amount(self) -> int:
-        return self._BonusAmount or self._bonus_amount
+    def bonus_amount(self) -> float:
+        return self.transition_BonusAmount or self.transition_bonus_amount
 
 
 class RaidStartMorale(BaseModel):
