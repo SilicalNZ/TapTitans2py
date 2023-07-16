@@ -124,6 +124,12 @@ class TargetState(Enum):
     Checked = 2
 
 
+class TargetStateStr(str, Enum):
+    NoTarget = "0"
+    Crossed = "1"
+    Checked = "2"
+
+
 class TargetStatePart(str, Enum):
     Head = "Head"
     Chest = "ChestUpper"

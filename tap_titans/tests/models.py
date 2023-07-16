@@ -29,7 +29,7 @@ class ModelTest(TestCase):
         models.RaidCycleReset(**json.loads(_raid_cycle_reset))
 
     def test_raid_sub_cycle(self):
-        models.RaidCycleReset(**json.loads(_sub_cycle))
+        models.ClanAddedRaidCycleReset(**json.loads(_sub_cycle))
 
     def test_raid_target(self):
         models.RaidTarget(**json.loads(_raid_target))
@@ -205,49 +205,88 @@ _raid_cycle_reset = '''{
     ]
 }'''
 
-_sub_cycle = '''{
-    "clan_code": "string",
-    "raid_id": 0,
-    "raid": {
-        "level": "string",
-        "tier": "string",
-        "spawn_sequence": [
-            "Lojak"
-        ],
-        "titans": [
-            {
-                "enemy_name": "Lojak",
-                "enemy_id": "Enemy1",
-                "total_hp": 0,
-                "parts": [
-                    {
-                        "part_id": "ArmorLegUpperRight",
-                        "total_hp": 0
-                    }
-                ]
-            }
-        ]
-    },
-    "titan_target": [
-        {
-            "enemy_id": "Enemy1",
-            "state": [
-                {
-                    "id": "Head",
-                    "state": 0
-                }
-            ]
-        }
-    ],
-    "raid_started_at": "2019-08-24T14:15:22Z",
-    "next_reset_at": "2019-08-24T14:15:22Z",
-    "card_bonuses": [
-        {
-            "id": "TeamTacticsClanMoraleBoost",
-            "value": 0
-        }
-    ]
-}'''
+_sub_cycle = '''{"card_bonuses": [{"id": "MirrorForceBoost", "value": 0.35},
+                               {"id": "TeamTacticsClanMoraleBoost", "value": 0.062299999999999946}],
+              "clan_code": "test", "next_reset_at": "2023-07-15T00:00:22Z",
+              "raid": {"area_buffs": [{"bonus_amount": 0.15, "bonus_type": "AllRaidDamage"}], "level": "68",
+                       "spawn_sequence": ["Terro", "Mohaca", "Sterl", "Terro", "Terro", "Sterl", "Mohaca", "Terro"],
+                       "tier": "9999", "titans": [
+                      {"area_debuffs": [{"bonus_amount": 0.5, "bonus_type": "AllLimbsHPMult"}],
+                       "cursed_debuffs": [{"bonus_amount": -0.06, "bonus_type": "BodyDamagePerCurse"}],
+                       "enemy_id": "Enemy4", "enemy_name": "Sterl",
+                       "parts": [{"cursed": false, "part_id": "BodyHead", "total_hp": 816000000.0},
+                                 {"cursed": true, "part_id": "ArmorHead", "total_hp": 816000000.0},
+                                 {"cursed": false, "part_id": "BodyChestUpper", "total_hp": 2692800000.0},
+                                 {"cursed": false, "part_id": "ArmorChestUpper", "total_hp": 1020000000.0},
+                                 {"cursed": false, "part_id": "BodyArmUpperRight", "total_hp": 306000000.0},
+                                 {"cursed": false, "part_id": "ArmorArmUpperRight", "total_hp": 382500000.0},
+                                 {"cursed": false, "part_id": "BodyArmUpperLeft", "total_hp": 306000000.0},
+                                 {"cursed": true, "part_id": "ArmorArmUpperLeft", "total_hp": 382500000.0},
+                                 {"cursed": false, "part_id": "BodyLegUpperRight", "total_hp": 612000000.0},
+                                 {"cursed": true, "part_id": "ArmorLegUpperRight", "total_hp": 765000000.0},
+                                 {"cursed": false, "part_id": "BodyLegUpperLeft", "total_hp": 612000000.0},
+                                 {"cursed": false, "part_id": "ArmorLegUpperLeft", "total_hp": 765000000.0},
+                                 {"cursed": false, "part_id": "BodyHandRight", "total_hp": 306000000.0},
+                                 {"cursed": true, "part_id": "ArmorHandRight", "total_hp": 382500000.0},
+                                 {"cursed": false, "part_id": "BodyHandLeft", "total_hp": 306000000.0},
+                                 {"cursed": false, "part_id": "ArmorHandLeft", "total_hp": 382500000.0}],
+                       "total_hp": 4080000000.0},
+                      {"area_debuffs": [{"bonus_amount": 0.5, "bonus_type": "AllArmsHPMult"}],
+                       "cursed_debuffs": [{"bonus_amount": -0.06, "bonus_type": "AfflictedDamagePerCurse"}],
+                       "enemy_id": "Enemy5", "enemy_name": "Mohaca",
+                       "parts": [{"cursed": false, "part_id": "BodyHead", "total_hp": 1020000000.0},
+                                 {"cursed": false, "part_id": "ArmorHead", "total_hp": 1020000000.0},
+                                 {"cursed": false, "part_id": "BodyChestUpper", "total_hp": 1020000000.0},
+                                 {"cursed": false, "part_id": "ArmorChestUpper", "total_hp": 2040000000.0},
+                                 {"cursed": false, "part_id": "BodyArmUpperRight", "total_hp": 612000000.0},
+                                 {"cursed": false, "part_id": "ArmorArmUpperRight", "total_hp": 382500000.0},
+                                 {"cursed": false, "part_id": "BodyArmUpperLeft", "total_hp": 612000000.0},
+                                 {"cursed": false, "part_id": "ArmorArmUpperLeft", "total_hp": 382500000.0},
+                                 {"cursed": false, "part_id": "BodyLegUpperRight", "total_hp": 836400000.0},
+                                 {"cursed": true, "part_id": "ArmorLegUpperRight", "total_hp": 510000000.0},
+                                 {"cursed": false, "part_id": "BodyLegUpperLeft", "total_hp": 836400000.0},
+                                 {"cursed": true, "part_id": "ArmorLegUpperLeft", "total_hp": 510000000.0},
+                                 {"cursed": false, "part_id": "BodyHandRight", "total_hp": 612000000.0},
+                                 {"cursed": true, "part_id": "ArmorHandRight", "total_hp": 382500000.0},
+                                 {"cursed": false, "part_id": "BodyHandLeft", "total_hp": 612000000.0},
+                                 {"cursed": true, "part_id": "ArmorHandLeft", "total_hp": 382500000.0}],
+                       "total_hp": 4080000000.0},
+                      {"area_debuffs": [{"bonus_amount": 0.5, "bonus_type": "ArmorLegsHPMult"}],
+                       "cursed_debuffs": [{"bonus_amount": -0.06, "bonus_type": "AfflictedDamagePerCurse"}],
+                       "enemy_id": "Enemy6", "enemy_name": "Terro",
+                       "parts": [{"cursed": false, "part_id": "BodyHead", "total_hp": 1101600000.0},
+                                 {"cursed": true, "part_id": "ArmorHead", "total_hp": 1142400000.0},
+                                 {"cursed": false, "part_id": "BodyChestUpper", "total_hp": 1550400000.0},
+                                 {"cursed": false, "part_id": "ArmorChestUpper", "total_hp": 1999200000.0},
+                                 {"cursed": false, "part_id": "BodyArmUpperRight", "total_hp": 224400000.0},
+                                 {"cursed": true, "part_id": "ArmorArmUpperRight", "total_hp": 255000000.0},
+                                 {"cursed": false, "part_id": "BodyArmUpperLeft", "total_hp": 224400000.0},
+                                 {"cursed": false, "part_id": "ArmorArmUpperLeft", "total_hp": 255000000.0},
+                                 {"cursed": false, "part_id": "BodyLegUpperRight", "total_hp": 448800000.0},
+                                 {"cursed": true, "part_id": "ArmorLegUpperRight", "total_hp": 642600000.0},
+                                 {"cursed": false, "part_id": "BodyLegUpperLeft", "total_hp": 448800000.0},
+                                 {"cursed": false, "part_id": "ArmorLegUpperLeft", "total_hp": 642600000.0},
+                                 {"cursed": false, "part_id": "BodyHandRight", "total_hp": 224400000.0},
+                                 {"cursed": false, "part_id": "ArmorHandRight", "total_hp": 255000000.0},
+                                 {"cursed": false, "part_id": "BodyHandLeft", "total_hp": 224400000.0},
+                                 {"cursed": true, "part_id": "ArmorHandLeft", "total_hp": 255000000.0}],
+                       "total_hp": 3060000000.0}]}, "raid_id": 2865891, "raid_started_at": "2023-07-13T00:00:22Z",
+              "titan_target": [{"enemy_id": "Enemy4",
+                                "state": [{"id": "Head", "state": "2"}, {"id": "ChestUpper", "state": "2"},
+                                          {"id": "ArmUpperRight", "state": "2"}, {"id": "ArmUpperLeft", "state": "2"},
+                                          {"id": "LegUpperRight", "state": "1"}, {"id": "LegUpperLeft", "state": "1"},
+                                          {"id": "HandRight", "state": "2"}, {"id": "HandLeft", "state": "2"}]},
+                               {"enemy_id": "Enemy5",
+                                "state": [{"id": "Head", "state": "1"}, {"id": "ChestUpper", "state": "1"},
+                                          {"id": "ArmUpperRight", "state": "2"}, {"id": "ArmUpperLeft", "state": "2"},
+                                          {"id": "LegUpperRight", "state": "2"}, {"id": "LegUpperLeft", "state": "2"},
+                                          {"id": "HandRight", "state": "2"}, {"id": "HandLeft", "state": "2"}]},
+                               {"enemy_id": "Enemy6",
+                                "state": [{"id": "Head", "state": "1"}, {"id": "ChestUpper", "state": "2"},
+                                          {"id": "ArmUpperRight", "state": "2"}, {"id": "ArmUpperLeft", "state": "2"},
+                                          {"id": "LegUpperRight", "state": "2"}, {"id": "LegUpperLeft", "state": "2"},
+                                          {"id": "HandRight", "state": "2"}, {"id": "HandLeft", "state": "2"}]}]}'''
+
 
 _raid_target = '''{
     "clan_code": "string",
