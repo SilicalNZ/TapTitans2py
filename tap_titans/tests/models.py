@@ -12,9 +12,8 @@ class ModelTest(TestCase):
     def test_raid_attack(self):
         models.RaidAttack(**json.loads(_raid_attack))
 
-    # Waiting for an actual payload to be used here, since documentation is not correct
-    # def test_raid_start(self):
-    #     models.RaidStart(**json.loads(_raid_start))
+    def test_raid_start(self):
+        models.RaidStart(**json.loads(_raid_start))
 
     def test_raid_sub_start(self):
         models.RaidStart(**json.loads(_raid_sub_start))
@@ -33,6 +32,67 @@ class ModelTest(TestCase):
 
     def test_raid_target(self):
         models.RaidTarget(**json.loads(_raid_target))
+
+
+_raid_start = '''{"clan_code": "test", "keys_remaining": 1,
+               "morale": {"bonus": {"BonusAmount": 0.25, "BonusType": "AllRaidDamage"}, "used": 0},
+               "player": {"name": "test", "player_code": "test"},
+               "raid": {"area_buffs": [{"bonus_amount": 3.0, "bonus_type": "RaidAttackDuration"}], "level": "1",
+                        "spawn_sequence": ["Jukk", "Sterl", "Takedar"], "tier": "9999", "titans": [
+                       {"area_debuffs": [{"bonus_amount": 0.5, "bonus_type": "AllLimbsHPMult"}], "enemy_id": "Enemy2",
+                        "enemy_name": "Takedar", "parts": [{"part_id": "BodyHead", "total_hp": 1468800000.0},
+                                                           {"part_id": "ArmorHead", "total_hp": 1224000000.0},
+                                                           {"part_id": "BodyChestUpper", "total_hp": 1224000000.0},
+                                                           {"part_id": "ArmorChestUpper", "total_hp": 1020000000.0},
+                                                           {"part_id": "BodyArmUpperRight", "total_hp": 382500000.0},
+                                                           {"part_id": "ArmorArmUpperRight", "total_hp": 306000000.0},
+                                                           {"part_id": "BodyArmUpperLeft", "total_hp": 382500000.0},
+                                                           {"part_id": "ArmorArmUpperLeft", "total_hp": 306000000.0},
+                                                           {"part_id": "BodyLegUpperRight", "total_hp": 459000000.0},
+                                                           {"part_id": "ArmorLegUpperRight", "total_hp": 459000000.0},
+                                                           {"part_id": "BodyLegUpperLeft", "total_hp": 459000000.0},
+                                                           {"part_id": "ArmorLegUpperLeft", "total_hp": 459000000.0},
+                                                           {"part_id": "BodyHandRight", "total_hp": 382500000.0},
+                                                           {"part_id": "ArmorHandRight", "total_hp": 306000000.0},
+                                                           {"part_id": "BodyHandLeft", "total_hp": 382500000.0},
+                                                           {"part_id": "ArmorHandLeft", "total_hp": 306000000.0}],
+                        "total_hp": 4080000000.0},
+                       {"area_debuffs": [{"bonus_amount": 0.5, "bonus_type": "ArmorArmsHPMult"}], "enemy_id": "Enemy3",
+                        "enemy_name": "Jukk", "parts": [{"part_id": "BodyHead", "total_hp": 1428000000.0},
+                                                        {"part_id": "ArmorHead", "total_hp": 1020000000.0},
+                                                        {"part_id": "BodyChestUpper", "total_hp": 1428000000.0},
+                                                        {"part_id": "ArmorChestUpper", "total_hp": 1020000000.0},
+                                                        {"part_id": "BodyArmUpperRight", "total_hp": 357000000.0},
+                                                        {"part_id": "ArmorArmUpperRight", "total_hp": 382500000.0},
+                                                        {"part_id": "BodyArmUpperLeft", "total_hp": 357000000.0},
+                                                        {"part_id": "ArmorArmUpperLeft", "total_hp": 382500000.0},
+                                                        {"part_id": "BodyLegUpperRight", "total_hp": 714000000.0},
+                                                        {"part_id": "ArmorLegUpperRight", "total_hp": 510000000.0},
+                                                        {"part_id": "BodyLegUpperLeft", "total_hp": 714000000.0},
+                                                        {"part_id": "ArmorLegUpperLeft", "total_hp": 510000000.0},
+                                                        {"part_id": "BodyHandRight", "total_hp": 357000000.0},
+                                                        {"part_id": "ArmorHandRight", "total_hp": 382500000.0},
+                                                        {"part_id": "BodyHandLeft", "total_hp": 357000000.0},
+                                                        {"part_id": "ArmorHandLeft", "total_hp": 382500000.0}],
+                        "total_hp": 4080000000.0},
+                       {"area_debuffs": [{"bonus_amount": 0.45, "bonus_type": "ArmorLegsHPMult"}], "enemy_id": "Enemy4",
+                        "enemy_name": "Sterl", "parts": [{"part_id": "BodyHead", "total_hp": 816000000.0},
+                                                         {"part_id": "ArmorHead", "total_hp": 816000000.0},
+                                                         {"part_id": "BodyChestUpper", "total_hp": 2692800000.0},
+                                                         {"part_id": "ArmorChestUpper", "total_hp": 1020000000.0},
+                                                         {"part_id": "BodyArmUpperRight", "total_hp": 204000000.0},
+                                                         {"part_id": "ArmorArmUpperRight", "total_hp": 255000000.0},
+                                                         {"part_id": "BodyArmUpperLeft", "total_hp": 204000000.0},
+                                                         {"part_id": "ArmorArmUpperLeft", "total_hp": 255000000.0},
+                                                         {"part_id": "BodyLegUpperRight", "total_hp": 408000000.0},
+                                                         {"part_id": "ArmorLegUpperRight", "total_hp": 739500000.0},
+                                                         {"part_id": "BodyLegUpperLeft", "total_hp": 408000000.0},
+                                                         {"part_id": "ArmorLegUpperLeft", "total_hp": 739500000.0},
+                                                         {"part_id": "BodyHandRight", "total_hp": 204000000.0},
+                                                         {"part_id": "ArmorHandRight", "total_hp": 255000000.0},
+                                                         {"part_id": "BodyHandLeft", "total_hp": 204000000.0},
+                                                         {"part_id": "ArmorHandLeft", "total_hp": 255000000.0}],
+                        "total_hp": 4080000000.0}]}, "raid_id": 2889500, "start_at": "2023-08-20T12:00:31Z"}'''
 
 
 _clan_unsub = '''{

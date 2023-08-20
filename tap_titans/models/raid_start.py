@@ -23,7 +23,7 @@ class TitanCursedDebuff(BaseModel):
 class RaidStartRaidTitanPart(BaseModel):
     part_id: model_type.TitanPart
     total_hp: int
-    cursed: bool
+    cursed: bool = Field(default=False, alias="cursed")
 
 
 class RaidStartRaidTitan(BaseModel):
@@ -32,7 +32,7 @@ class RaidStartRaidTitan(BaseModel):
     total_hp: int
     parts: tuple[RaidStartRaidTitanPart, ...]
     area_debuffs: tuple[TitanAreaDebuff, ...]
-    cursed_debuffs: tuple[TitanCursedDebuff, ...]
+    cursed_debuffs: tuple[TitanCursedDebuff, ...] = Field(default=())
 
 
 class RaidStartRaidAreaBuff(BaseModel):
@@ -47,10 +47,9 @@ class RaidStartRaid(Raid):
 
 
 class RaidStartMoraleBonus(BaseModel):
-    # Tidy this up when it is fixed
     transition_BonusType: Optional[str] = Field(default=None, alias="BonusType")
     transition_BonusAmount: Optional[float] = Field(default=None, alias="BonusAmount")
-    transition_bonus_type: Optional[str] = Field(default=None, alias="bonus_type")  # Change to enum when it is documented
+    transition_bonus_type: Optional[str] = Field(default=None, alias="bonus_type")
     transition_bonus_amount: Optional[float] = Field(default=None, alias="bonus_amount")
 
     @property
@@ -63,8 +62,13 @@ class RaidStartMoraleBonus(BaseModel):
 
 
 class RaidStartMorale(BaseModel):
-    bonus: RaidStartMoraleBonus
+    bonus: Optional[RaidStartMoraleBonus] = Field(default=None, alias="bonus")  # This is deprecated, remove after 6.2
+    transition_bonus_amount: Optional[float] = Field(default=None, alias="bonus_amount")
     used: int
+
+    @property
+    def bonus_amount(self) -> float:
+        return self.transition_bonus_amount or (self.bonus.bonus_amount if self.bonus else 0)
 
 
 class RaidStart(BaseModel):
