@@ -347,19 +347,9 @@ _sub_cycle = '''{"card_bonuses": [{"id": "MirrorForceBoost", "value": 0.35},
                                           {"id": "LegUpperRight", "state": "2"}, {"id": "LegUpperLeft", "state": "2"},
                                           {"id": "HandRight", "state": "2"}, {"id": "HandLeft", "state": "2"}]}]}'''
 
-
-_raid_target = '''{
-    "clan_code": "string",
-    "raid_id": 0,
-    "updated_at": "2019-08-24T14:15:22Z",
-    "player": {
-        "name": "string",
-        "player_code": "string"
-    },
-    "state": [
-        {
-            "id": "Head",
-            "state": 0
-        }
-    ]
-}'''
+_raid_target = '''{"clan_code": "test", "enemy_id": "Enemy2", "player": {"name": "test", "player_code": "test"},
+        "raid_id": 2894808, "state": [{"id": "Head", "state": "2"}, {"id": "ChestUpper", "state": "2"},
+                                      {"id": "ArmUpperRight", "state": "2"}, {"id": "ArmUpperLeft", "state": "2"},
+                                      {"id": "LegUpperRight", "state": "1"}, {"id": "LegUpperLeft", "state": "1"},
+                                      {"id": "HandRight", "state": "2"}, {"id": "HandLeft", "state": "2"}],
+        "updated_at": "2023-08-29T05:12:11Z"}'''

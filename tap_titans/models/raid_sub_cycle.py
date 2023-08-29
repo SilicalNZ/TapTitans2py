@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from tap_titans.models.model_type import CardBonus, TargetStatePart, TargetStateStr, Enemy
+from tap_titans.models.model_type import CardBonus, TargetStatePart, TargetState, Enemy
 from tap_titans.models.code import ClanCode
 from tap_titans.models.raid_start import RaidStartRaid
 from tap_titans.utils.base import BaseModel
@@ -13,7 +13,7 @@ class RaidCycleResetCardBonus(BaseModel):
 
 class ClanAddedRaidTargetTitanState(BaseModel):
     id: TargetStatePart
-    state: TargetStateStr
+    state: TargetState
 
 
 class ClanAddedRaidTarget(BaseModel):

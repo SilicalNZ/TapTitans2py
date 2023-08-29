@@ -118,13 +118,7 @@ class EnemyName(str, Enum):
     Priker = "Priker"
 
 
-class TargetState(Enum):
-    NoTarget = 0
-    Crossed = 1
-    Checked = 2
-
-
-class TargetStateStr(str, Enum):
+class TargetState(str, Enum):
     NoTarget = "0"
     Crossed = "1"
     Checked = "2"
