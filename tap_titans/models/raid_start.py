@@ -1,5 +1,4 @@
 from datetime import datetime
-from typing import Optional
 
 from pydantic import Field
 
@@ -47,28 +46,21 @@ class RaidStartRaid(Raid):
 
 
 class RaidStartMoraleBonus(BaseModel):
-    transition_BonusType: Optional[str] = Field(default=None, alias="BonusType")
-    transition_BonusAmount: Optional[float] = Field(default=None, alias="BonusAmount")
-    transition_bonus_type: Optional[str] = Field(default=None, alias="bonus_type")
-    transition_bonus_amount: Optional[float] = Field(default=None, alias="bonus_amount")
-
-    @property
-    def bonus_type(self) -> str:
-        return self.transition_BonusType or self.transition_bonus_type
-
-    @property
-    def bonus_amount(self) -> float:
-        return self.transition_BonusAmount or self.transition_bonus_amount
+    bonus_type: str
+    bonus_amount: float
 
 
 class RaidStartMorale(BaseModel):
-    bonus: Optional[RaidStartMoraleBonus] = Field(default=None, alias="bonus")  # This is deprecated, remove after 6.2
-    transition_bonus_amount: Optional[float] = Field(default=None, alias="bonus_amount")
+    bonus_amount: float
     used: int
 
+    # Compatibility <6.2
     @property
-    def bonus_amount(self) -> float:
-        return self.transition_bonus_amount or (self.bonus.bonus_amount if self.bonus else 0)
+    def bonus(self) -> RaidStartMoraleBonus:
+        return RaidStartMoraleBonus(
+            bonus_type="AllRaidDamage",
+            bonus_amount=self.bonus_amount,
+        )
 
 
 class RaidStart(BaseModel):

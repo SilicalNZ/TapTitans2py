@@ -35,7 +35,7 @@ class ModelTest(TestCase):
 
 
 _raid_start = '''{"clan_code": "test", "keys_remaining": 1,
-               "morale": {"bonus": {"BonusAmount": 0.25, "BonusType": "AllRaidDamage"}, "used": 0},
+               "morale": {"bonus_amount": 0.25, "used": 0},
                "player": {"name": "test", "player_code": "test"},
                "raid": {"area_buffs": [{"bonus_amount": 3.0, "bonus_type": "RaidAttackDuration"}], "level": "1",
                         "spawn_sequence": ["Jukk", "Sterl", "Takedar"], "tier": "9999", "titans": [
@@ -129,7 +129,7 @@ _raid_attack = '''{"attack_log": {"attack_datetime": "2023-06-25T12:04:20Z", "ca
                                "titan_index": 0}}'''
 
 _raid_sub_start = '''{"clan_code": "test", "raid_id": 123, "keys_remaining": 1,
-                   "morale": {"bonus": {"BonusType": "AllRaidDamage", "BonusAmount": 0.341}, "used": 13695},
+               "morale": {"bonus_amount": 0.341, "used": 13695},
                    "player": {"name": "string", "player_code": "string"}, 
                    "raid": {"spawn_sequence": ["Klonk", "Klonk", "Takedar", "Klonk", "Takedar", "Priker"],
                                           "tier": "9999", "level": "55", "titans": [
@@ -254,6 +254,7 @@ _raid_retire = '''{
 _raid_cycle_reset = '''{
     "clan_code": "string",
     "raid_id": 0,
+    "morale": {"bonus_amount": 0.341, "used": 13695},
     "started_at": "2019-08-24T14:15:22Z",
     "raid_started_at": "2019-08-24T14:15:22Z",
     "next_reset_at": "2019-08-24T14:15:22Z",
@@ -268,6 +269,7 @@ _raid_cycle_reset = '''{
 _sub_cycle = '''{"card_bonuses": [{"id": "MirrorForceBoost", "value": 0.35},
                                {"id": "TeamTacticsClanMoraleBoost", "value": 0.062299999999999946}],
               "clan_code": "test", "next_reset_at": "2023-07-15T00:00:22Z",
+              "morale": {"bonus_amount": 0.341, "used": 13695},
               "raid": {"area_buffs": [{"bonus_amount": 0.15, "bonus_type": "AllRaidDamage"}], "level": "68",
                        "spawn_sequence": ["Terro", "Mohaca", "Sterl", "Terro", "Terro", "Sterl", "Mohaca", "Terro"],
                        "tier": "9999", "titans": [
