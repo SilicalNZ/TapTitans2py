@@ -14,7 +14,7 @@ A drop in library to provide requests and responses to the various Tap Titans 2 
 
 - You need to request a Player Token of a clan Master or GrandMaster. They can create one for you by going to the `Settings -> Player API Tokens` in the app
 - You will need to join the [GameHive Discord](https://discord.com/invite/gamehive) and ask for an API Token in the channel #app-token-request.
-- You need to be prepared to run this 24/7 with a stable connection. GameHive does not store events and so if this isn't running, events will be skipped with no way to get them again. I recommend [Google Compute Engine](https://cloud.google.com/free/docs/free-cloud-features#free-tier-usage-limits) which has a permanent free tier on a E2-micro instance.
+- You need to be prepared to run this 24/7 with a stable connection. GameHive does not store events and so if this isn't running, events will be skipped with no way to get them again. I recommend [Google Compute Engine](https://cloud.google.com/free/docs/free-cloud-features#compute) which has a permanent free tier on a E2-micro instance.
 
 ## Installing
 **Python 3.10 or higher is required**
