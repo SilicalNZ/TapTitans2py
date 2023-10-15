@@ -2,8 +2,18 @@ import abc
 from datetime import datetime
 
 from tap_titans.utils.base import BaseModel
-from pydantic import Field
+from tap_titans.abcs.error import UnknownError
 
+
+__all__ = (
+    "GlobalRaidInfo",
+    "MasterTierLeaderboardPlacement",
+    "MasterTierLeaderboard",
+    "HolidayEventBreakpoint",
+    "HolidayEventBreakpoints",
+    "PublicAPIABC",
+    "UnknownError",
+)
 
 
 class GlobalRaidInfo(BaseModel):
@@ -34,16 +44,6 @@ class HolidayEventBreakpoint(BaseModel):
 class HolidayEventBreakpoints(BaseModel):
     holiday_event_id: str
     breakpoint: tuple[HolidayEventBreakpoint, ...]
-
-
-class UnknownErrorContext(BaseModel):
-    extra: dict
-    http_code: int
-    message: str
-
-
-class UnknownError(BaseModel):
-    error: UnknownErrorContext = Field(alias="_error")
 
 
 class PublicAPIABC(metaclass=abc.ABCMeta):

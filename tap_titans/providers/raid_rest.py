@@ -28,9 +28,14 @@ class RaidRestAPI(abc.RaidRestABC):
                     json=payload,
                     params=params,
             ) as resp:
-                return await resp.json()
+                result = await resp.json()
 
-    async def subscribe(self, player_tokens: list[str]) -> abc.SubscribeResp:
+                if result.get("_error") is not None:
+                    return abc.UnknownError(**result)
+
+                return result
+
+    async def subscribe(self, player_tokens: list[str]) -> abc.SubscribeResp | abc.UnknownError:
         result = await self._request(
             method=Method.POST,
             endpoint="/subscribe",
@@ -39,9 +44,9 @@ class RaidRestAPI(abc.RaidRestABC):
             },
         )
 
-        return abc.SubscribeResp(**result)
+        return abc.SubscribeResp(**result) if isinstance(result, dict) else result
 
-    async def unsubscribe(self, player_tokens: list[str]) -> abc.SubscribeResp:
+    async def unsubscribe(self, player_tokens: list[str]) -> abc.SubscribeResp | abc.UnknownError:
         result = await self._request(
             method=Method.POST,
             endpoint="/unsubscribe",
@@ -50,4 +55,4 @@ class RaidRestAPI(abc.RaidRestABC):
             },
         )
 
-        return abc.SubscribeResp(**result)
+        return abc.SubscribeResp(**result) if isinstance(result, dict) else result

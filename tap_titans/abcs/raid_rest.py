@@ -2,6 +2,7 @@ import abc
 from dataclasses import dataclass
 
 from tap_titans.models.code import ClanCode
+from tap_titans.abcs.error import UnknownError
 from tap_titans.utils.base import BaseModel
 
 
@@ -11,6 +12,7 @@ __all__ = (
     "SubscribeResp",
     "SubscribeRespOK",
     "SubscribeRespRefused",
+    "UnknownError",
 )
 
 
@@ -34,9 +36,9 @@ class RaidRestABC(metaclass=abc.ABCMeta):
     # https://tt2-docs.gamehivegames.com/rest/
 
     @abc.abstractmethod
-    async def subscribe(self, player_tokens: list[str]) -> SubscribeResp:
+    async def subscribe(self, player_tokens: list[str]) -> SubscribeResp | UnknownError:
         raise NotImplementedError()
 
     @abc.abstractmethod
-    async def unsubscribe(self, player_tokens: list[str]) -> SubscribeResp:
+    async def unsubscribe(self, player_tokens: list[str]) -> SubscribeResp | UnknownError:
         raise NotImplementedError()
