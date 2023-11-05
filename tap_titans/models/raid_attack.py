@@ -52,6 +52,7 @@ class RaidAttackPlayer(Player):
 class RaidAttack(BaseModel):
     clan_code: ClanCode
     raid_id: int
+    cycle: int
     player: RaidAttackPlayer
     attack_log: RaidAttackLog
     raid_state: RaidAttackRaidState

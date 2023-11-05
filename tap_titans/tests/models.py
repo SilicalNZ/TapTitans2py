@@ -108,6 +108,7 @@ _raid_attack = '''{"attack_log": {"attack_datetime": "2023-06-25T12:04:20Z", "ca
                                "cards_level": [{"id": "LimbSupport", "value": 25}, {"id": "Haymaker", "value": 29},
                                                {"id": "AstralEcho", "value": 44}]}, "clan_code": "test",
                 "raid_id": 123,
+                "cycle": 3,
                 "player": {"attacks_remaining": 5, "player_code": "test", "name": "test", "raid_level": 700},
                 "raid_state": {"current": {"enemy_id": "Enemy7", "current_hp": 3662999993.0,
                                            "parts": [{"part_id": "BodyHead", "current_hp": 1505900000.0},
