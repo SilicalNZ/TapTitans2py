@@ -262,7 +262,7 @@ _raid_cycle_reset = '''{
     "card_bonuses": [
         {
             "id": "TeamTacticsClanMoraleBoost",
-            "value": 0
+            "value": 0.452299999999999946
         }
     ]
 }'''

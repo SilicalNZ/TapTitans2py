@@ -9,7 +9,7 @@ from tap_titans.utils.base import BaseModel
 
 class RaidCycleResetCardBonus(BaseModel):
     id: CardBonus
-    value: int
+    value: float
 
 
 class ClanAddedRaidTargetTitanState(BaseModel):
