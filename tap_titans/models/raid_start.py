@@ -63,11 +63,14 @@ class RaidStartMorale(BaseModel):
         )
 
 
-class RaidStart(BaseModel):
+class RaidSubStart(BaseModel):
     clan_code: ClanCode
     raid_id: int
-    player: Player
     keys_remaining: int
     morale: RaidStartMorale
     raid: RaidStartRaid
     start_at: datetime
+
+
+class RaidStart(RaidSubStart):
+    player: Player

@@ -16,7 +16,7 @@ class ModelTest(TestCase):
         models.RaidStart(**json.loads(_raid_start))
 
     def test_raid_sub_start(self):
-        models.RaidStart(**json.loads(_raid_sub_start))
+        models.RaidSubStart(**json.loads(_raid_sub_start))
 
     def test_raid_end(self):
         models.RaidEnd(**json.loads(_raid_end))
@@ -131,7 +131,6 @@ _raid_attack = '''{"attack_log": {"attack_datetime": "2023-06-25T12:04:20Z", "ca
 
 _raid_sub_start = '''{"clan_code": "test", "raid_id": 123, "keys_remaining": 1,
                "morale": {"bonus_amount": 0.341, "used": 13695},
-                   "player": {"name": "string", "player_code": "string"}, 
                    "raid": {"spawn_sequence": ["Klonk", "Klonk", "Takedar", "Klonk", "Takedar", "Priker"],
                                           "tier": "9999", "level": "55", "titans": [
             {"enemy_id": "Enemy2", "total_hp": 4070000000.0,
