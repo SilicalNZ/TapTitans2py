@@ -1,12 +1,13 @@
 from enum import Enum
 
 
-class Event(str, Enum):
+class ClanEvent(str, Enum):
     CONNECTED = "connected"
     DISCONNECTED = "disconnect"
     ERROR = "error"
     CONNECTION_ERROR = "connect_error"
     CLAN_REMOVED = "unsub_clan"
+    RAID_ATTACK_START = "start_attack"
     RAID_ATTACK = "attack"
     RAID_START = "start"
     CLAN_ADDED_RAID_START = "sub_start"
@@ -15,6 +16,21 @@ class Event(str, Enum):
     RAID_CYCLE_RESET = "cycle_reset"
     CLAN_ADDED_CYCLE = "sub_cycle"
     RAID_TARGET_CHANGED = "target"
+    CLAN_JOIN = "join"
+    CLAN_LEAVE = "leave"
+    CLAN_KICK = "kick"
+    PLAYER_MORALE = "morale"
+    CLAN_SYNC = "sync"
+
+
+Event = ClanEvent  # Deprecated: Use ClanEvent
+
+
+class PlayerEvent(str, Enum):
+    CONNECTED = "connected"
+    DISCONNECTED = "disconnect"
+    ERROR = "error"
+    CONNECTION_ERROR = "connect_error"
 
 
 class TitanPart(str, Enum):

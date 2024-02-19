@@ -53,9 +53,10 @@ async def connected():
         print("Subscribed to clan:", resp.ok[0].clan_code)
 
         
-async def clan_added_cycle(message: models.RaidCycleReset):
+async def clan_added_cycle(message: models.ClanAddedRaidCycleReset):
     print("Clan Added Cycle", message)
     print("Raid level of clan", message.raid.level)
+
 
 async def raid_attack(message: models.RaidAttack):
     print("Raid Attack", message)
