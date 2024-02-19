@@ -33,6 +33,24 @@ class ModelTest(TestCase):
     def test_raid_target(self):
         models.RaidTarget(**json.loads(_raid_target))
 
+    def test_player_morale(self):
+        models.PlayerMorale(**json.loads(_player_morale))
+
+    def test_raid_attack_started(self):
+        models.RaidAttackStart(**json.loads(_raid_attack_start))
+
+    def test_clan_kick(self):
+        models.ClanKick(**json.loads(_clan_kick))
+
+    def test_clan_leave(self):
+        models.ClanLeave(**json.loads(_clan_leave))
+
+    def test_clan_join(self):
+        models.ClanJoin(**json.loads(_clan_join))
+
+    def test_clan_sync(self):
+        models.ClanSync(**json.loads(_clan_sync))
+
 
 _raid_start = '''{"clan_code": "test", "keys_remaining": 1,
                "morale": {"bonus_amount": 0.25, "used": 0},
@@ -355,3 +373,15 @@ _raid_target = '''{"clan_code": "test", "enemy_id": "Enemy2", "player": {"name":
                                       {"id": "LegUpperRight", "state": "1"}, {"id": "LegUpperLeft", "state": "1"},
                                       {"id": "HandRight", "state": "2"}, {"id": "HandLeft", "state": "2"}],
         "updated_at": "2023-08-29T05:12:11Z"}'''
+
+_player_morale = '''{"amount": 11, "clan_code": "test", "player": {"name": "test", "player_code": "test"}}'''
+
+_raid_attack_start = '''{"cards": ["PowerBubble", "MentalFocus", "DecayingAttack"], "clan_code": "test", "player": {"name": "test", "player_code": "test"}, "raid_id": 2983816, "started_at": "2024-02-19T15:01:26Z"}'''
+
+_clan_kick = '''{"clan_code": "test", "executor": {"name": "test", "player_code": "test"}, "player": {"name": "test", "player_code": "test"}}'''
+
+_clan_leave = '''{"clan_code": "test", "player": {"name": "test", "player_code": "test"}}'''
+
+_clan_join = '''{"clan_code": "test", "player": {"name": "test", "player_code": "test"}}'''
+
+_clan_sync = '''{"clan_code": "test", "clan_name": "test"}'''
