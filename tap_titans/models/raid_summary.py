@@ -1,20 +1,19 @@
-from tap_titans.models import model_type
-from tap_titans.models.code import PlayerCode
-from tap_titans.utils.base import BaseModel
+from tap_titans.models.generic import TitanParts, PlayerCode, EnemyIDs
+from tap_titans.utils.base import Struct
 
 
-class DamageLog(BaseModel):
-    id: model_type.TitanPart
+class DamageLog(Struct):
+    id: TitanParts
     value: int
 
 
-class Log(BaseModel):
-    enemy_id: model_type.Enemy
+class Log(Struct):
+    enemy_id: EnemyIDs
     titan_index: int
     damage_log: tuple[DamageLog, ...]
 
 
-class RaidSummary(BaseModel):
+class RaidSummary(Struct):
     player_code: PlayerCode
     name: str
     num_attacks: int

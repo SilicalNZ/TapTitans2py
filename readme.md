@@ -7,7 +7,7 @@ A drop in library to provide requests and responses to the various Tap Titans 2 
 - Modern Pythonic API using `async`/`await` syntax
 - Easy to use with an object-oriented design
 - Cross version compatibility. 
-- Interfaces for all TapTitans2 APIs; SocketIO, Rest, PublicAPI and Manual Data
+- Interfaces for all TapTitans2 APIs; SocketIO, Rest, PublicAPI
 - Fully annotated using python typehinting
 
 ## Getting Started
@@ -44,7 +44,7 @@ PLAYER_TOKENS = ["player_token"]
 async def connected():
     print("Connected")
 
-    r = providers.RaidRestAPI(AUTH_TOKEN)
+    r = providers.RestAPI(AUTH_TOKEN)
 
     resp = await r.subscribe(PLAYER_TOKENS)
     if len(resp.refused) > 0:
@@ -52,24 +52,30 @@ async def connected():
     else:
         print("Subscribed to clan:", resp.ok[0].clan_code)
 
-        
-async def clan_added_cycle(message: models.ClanAddedRaidCycleReset):
+async def clan_added_cycle(message: models.raid_models.RaidCycleResetClanAdded):
     print("Clan Added Cycle", message)
     print("Raid level of clan", message.raid.level)
 
-
-async def raid_attack(message: models.RaidAttack):
+async def raid_attack_end(message: models.raid_models.RaidAttackEnd):
     print("Raid Attack", message)
-        
+
+async def player_connected():
+    print("Player WS is connected, can now use the rest API /player endpoints")
+    r = providers.RestAPI(AUTH_TOKEN)
+
+    resp = await r.player_data(PLAYER_TOKENS[0], providers.PlayerDataProperties.all())
+
+    print("Name of the player who owns the token:", resp.name)
 
 websocket = providers.WebsocketClient(
     connected=connected,
-    raid_attack=raid_attack,
+    raid_attack_end=raid_attack_end,
     clan_added_cycle=clan_added_cycle,
     setting_validate_arguments=True,
+    player_connected=player_connected,
 )
 
-asyncio.run(websocket.connect(AUTH_TOKEN)) 
+asyncio.run(websocket.connect(AUTH_TOKEN))
 ```
 Find more examples in the [examples directory](https://github.com/SilicalNZ/TapTitans2py/blob/master/examples/main.py)
 
@@ -77,6 +83,7 @@ Find more examples in the [examples directory](https://github.com/SilicalNZ/TapT
 
 - Report bugs in the [issue tracker](https://github.com/SilicalNZ/TapTitans2py/issues)
 - Reach out on Discord to the maintainer `silical`
+- Join the [Discord Server](https://discord.gg/FyYR62hHHB)
 
 
 ## Links

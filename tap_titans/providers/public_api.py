@@ -27,7 +27,7 @@ class PublicAPI(abc.PublicAPIABC):
             endpoint: str = "",
             payload: None | dict = None,
             params: None | dict = None,
-    ) -> dict | UnknownError:
+    ) -> str | UnknownError:
         async with aiohttp.ClientSession(raise_for_status=True) as session:
             async with session.request(
                     Method.GET,
@@ -35,30 +35,30 @@ class PublicAPI(abc.PublicAPIABC):
                     json=payload,
                     params=params,
             ) as resp:
-                result = await resp.json()
+                result = await resp.text()
 
-                if result.get("_error") is not None:
-                    return UnknownError(**result)
-
-                return result
+                try:
+                    return UnknownError.decode_json(result)
+                except:
+                    return result
 
     async def get_global_raid_info(self) -> GlobalRaidInfo | UnknownError:
         result = await self._request(
             endpoint="/global_raid/info",
         )
 
-        return GlobalRaidInfo(**result) if isinstance(result, dict) else result
+        return GlobalRaidInfo.decode_json(result) if isinstance(result, str) else result
 
     async def get_master_tier_leaderboard(self) -> MasterTierLeaderboard | UnknownError:
         result = await self._request(
             endpoint="/clan/public/master_tier_leaderboard",
         )
 
-        return MasterTierLeaderboard(**result) if isinstance(result, dict) else result
+        return MasterTierLeaderboard.decode_json(result) if isinstance(result, str) else result
 
     async def get_holiday_event_breakpoints(self) -> HolidayEventBreakpoints | UnknownError:
         result = await self._request(
             endpoint="/holiday_event/breakpoint",
         )
 
-        return HolidayEventBreakpoints(**result) if isinstance(result, dict) else result
+        return HolidayEventBreakpoints.decode_json(result) if isinstance(result, str) else result

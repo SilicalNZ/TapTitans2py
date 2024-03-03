@@ -1,10 +1,7 @@
-class Code(str):
-    pass
+from typing import NewType
 
+PlayerCode = NewType("PlayerCode", str)
 
-class PlayerCode(Code):
-    pass
+ClanCode = NewType("ClanCode", str)
 
-
-class ClanCode(Code):
-    pass
+RaidID = NewType("RaidID", int)

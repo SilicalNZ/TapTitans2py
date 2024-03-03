@@ -1,12 +1,11 @@
 from datetime import datetime
 
 from tap_titans.models.raid_summary import RaidSummary
-from tap_titans.models.player import Player
-from tap_titans.models.code import ClanCode
-from tap_titans.utils.base import BaseModel
+from tap_titans.models.generic import Player, ClanCode
+from tap_titans.utils.base import Struct
 
 
-class RaidRetire(BaseModel):
+class RaidRetire(Struct):
     clan_code: ClanCode
     raid_id: int
     retired_at: datetime

@@ -1,8 +1,8 @@
 import abc
 from datetime import datetime
 
-from tap_titans.utils.base import BaseModel
 from tap_titans.abcs.error import UnknownError
+from tap_titans.utils.base import Struct
 
 
 __all__ = (
@@ -16,7 +16,7 @@ __all__ = (
 )
 
 
-class GlobalRaidInfo(BaseModel):
+class GlobalRaidInfo(Struct):
     start_date: datetime
     end_date: datetime
     current_phase: int
@@ -24,24 +24,24 @@ class GlobalRaidInfo(BaseModel):
     total_hp: int
 
 
-class MasterTierLeaderboardPlacement(BaseModel):
+class MasterTierLeaderboardPlacement(Struct):
     rank: int
     name: str
     code: str
     level: int
 
 
-class MasterTierLeaderboard(BaseModel):
+class MasterTierLeaderboard(Struct):
     season_id: str
     leaderboard: tuple[MasterTierLeaderboardPlacement, ...]
 
 
-class HolidayEventBreakpoint(BaseModel):
+class HolidayEventBreakpoint(Struct):
     percentile: float
     currency: int
 
 
-class HolidayEventBreakpoints(BaseModel):
+class HolidayEventBreakpoints(Struct):
     holiday_event_id: str
     breakpoint: tuple[HolidayEventBreakpoint, ...]
 

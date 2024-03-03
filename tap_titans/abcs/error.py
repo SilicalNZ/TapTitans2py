@@ -1,13 +1,11 @@
-from tap_titans.utils.base import BaseModel
-
-from pydantic import Field
+from tap_titans.utils.base import Struct, field
 
 
-class UnknownErrorContext(BaseModel):
+class UnknownErrorContext(Struct):
     extra: dict
     http_code: int
     message: str
 
 
-class UnknownError(BaseModel):
-    error: UnknownErrorContext = Field(alias="_error")
+class UnknownError(Struct):
+    error: UnknownErrorContext = field(name="_error")
