@@ -16,14 +16,14 @@ class TitanCursedDebuff(Struct):
 
 class RaidStartRaidTitanPart(Struct):
     part_id: TitanParts
-    total_hp: int
+    total_hp: float
     cursed: bool = False
 
 
 class RaidStartRaidTitan(Struct):
     enemy_name: EnemyNames
     enemy_id: EnemyIDs
-    total_hp: int
+    total_hp: float
     parts: tuple[RaidStartRaidTitanPart, ...]
     area_debuffs: tuple[TitanAreaDebuff, ...]
     cursed_debuffs: tuple[TitanCursedDebuff, ...] = field(default_factory=tuple)

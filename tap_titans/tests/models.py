@@ -59,7 +59,7 @@ _raid_start = '''{"clan_code": "test", "keys_remaining": 1,
                "raid": {"area_buffs": [{"bonus_amount": 3.0, "bonus_type": "RaidAttackDuration"}], "level": "1",
                         "spawn_sequence": ["Jukk", "Sterl", "Takedar"], "tier": "9999", "titans": [
                        {"area_debuffs": [{"bonus_amount": 0.5, "bonus_type": "AllLimbsHPMult"}], "enemy_id": "Enemy2",
-                        "enemy_name": "Takedar", "parts": [{"part_id": "BodyHead", "total_hp": 1468800000.0},
+                        "enemy_name": "Takedar", "parts": [{"part_id": "BodyHead", "total_hp": 1468800000.000001},
                                                            {"part_id": "ArmorHead", "total_hp": 1224000000.0},
                                                            {"part_id": "BodyChestUpper", "total_hp": 1224000000.0},
                                                            {"part_id": "ArmorChestUpper", "total_hp": 1020000000.0},
