@@ -6,11 +6,11 @@ from tap_titans.utils.base import Struct
 
 class RaidAttackEndRaidStateCurrentPart(Struct):
     part_id: TitanParts
-    current_hp: int
+    current_hp: float
 
 
 class RaidAttackEndRaidStateCurrent(Struct):
-    current_hp: int
+    current_hp: float
     enemy_id: EnemyIDs
     parts: tuple[RaidAttackEndRaidStateCurrentPart, ...]
 
