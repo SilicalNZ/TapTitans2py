@@ -22,6 +22,9 @@ class ModelTest(TestCase):
     def test_raid_retire(self):
         models.raid_models.RaidRetire.decode_json(_raid_retire)
 
+    def test_raid_retire_by_system(self):
+        models.raid_models.RaidRetire.decode_json(_raid_retire_by_system)
+
     def test_raid_cycle_reset(self):
         models.raid_models.RaidCycleReset.decode_json(_raid_cycle_reset)
 
@@ -300,6 +303,34 @@ _raid_retire = '''{
         "name": "string",
         "player_code": "string"
     },
+    "keys_remaining": 2,
+    "raid_summary": [
+        {
+            "player_code": "string",
+            "name": "string",
+            "num_attacks": 0,
+            "total_damage": 0,
+            "log": [
+                {
+                    "enemy_id": "Enemy1",
+                    "titan_index": 0,
+                    "damage_log": [
+                        {
+                            "id": "ArmorLegUpperRight",
+                            "value": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}'''
+
+_raid_retire_by_system = '''{
+    "clan_code": "string",
+    "raid_id": 0,
+    "retired_at": "2019-08-24T14:15:22Z",
+    "player": {},
     "keys_remaining": 2,
     "raid_summary": [
         {
