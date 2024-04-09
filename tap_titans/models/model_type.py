@@ -101,6 +101,8 @@ class Cards(str, Enum):
     TeamTactics = "TeamTactics"
     SkeletalSmash = "SpinalTap"
     AstralEcho = "AstralEcho"
+    Amplify = "MagicPotion"
+    RadiantKaleidoscope = "TriangleSupport"
 
 
 class EnemyIDs(str, Enum):
