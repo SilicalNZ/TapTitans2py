@@ -44,21 +44,21 @@ class PlayerCard(Struct):
 
 
 class ClanPlayerData(Struct):
-    player_code: str
-    country_code: str
-    max_stage: int
-    raid_wildcard_count: int
-    current_card_currency: int
-    name: str
-    total_raid_player_xp: str
-    player_raid_level: str
-    total_card_level: str
-    role: str
-    weekly_ticket_count: str
-    loyalty_level: str
-    daily_raid_tickets: str
-    previous_rank: str
-    cards: tuple[PlayerCard, ...]
+    player_code: str | None
+    country_code: str | None
+    max_stage: int | None
+    raid_wildcard_count: int | None
+    current_card_currency: int | None
+    name: str | None
+    total_raid_player_xp: str | None
+    player_raid_level: str | None
+    total_card_level: str | None
+    role: str | None
+    weekly_ticket_count: str | None
+    loyalty_level: str | None
+    daily_raid_tickets: str | None
+    previous_rank: str | None
+    cards: tuple[PlayerCard, ...] | None
 
 
 class ClanDataResp(Struct):
