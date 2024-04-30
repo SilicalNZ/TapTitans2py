@@ -4,7 +4,7 @@ from tap_titans.models.player import Artifacts, Card, ClanScrolls, HeroWeapons, 
 
 
 class PlayerArtifact(Struct):
-    artifact_id: Artifacts
+    artifact_id: str
     is_enchanted: bool
     level: str
 
@@ -26,17 +26,17 @@ class PlayerCard(Struct):
 
 class PlayerClanScroll(Struct):
     level: int = field(name="Level")
-    scroll_id: ClanScrolls = field(name="ScrollId")
+    scroll_id: str = field(name="ScrollId")
 
 
 class PlayerHeroWeapon(Struct):
     level: int = field(name="Level")
-    hero_id: HeroWeapons = field(name="HelperID")
+    hero_id: str = field(name="HelperID")
 
 
 class PlayerPet(Struct):
     level: int
-    pet_id: Pets
+    pet_id: str
 
 
 class PlayerSeasonalArtifact(Struct):
