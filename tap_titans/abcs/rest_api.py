@@ -50,13 +50,13 @@ class ClanPlayerData(Struct):
     raid_wildcard_count: int | None
     current_card_currency: int | None
     name: str | None
-    total_raid_player_xp: str | None
-    player_raid_level: str | None
-    total_card_level: str | None
+    total_raid_player_xp: int | None
+    player_raid_level: int | None
+    total_card_level: int | None
     role: str | None
-    weekly_ticket_count: str | None
-    loyalty_level: str | None
-    daily_raid_tickets: str | None
+    weekly_ticket_count: int | None
+    loyalty_level: int | None
+    daily_raid_tickets: int | None
     previous_rank: str | None
     cards: tuple[PlayerCard, ...] | None
 
@@ -68,21 +68,25 @@ class ClanDataResp(Struct):
 
 
 class ClanDataProperties(str, Enum):
-    max_stage: "max_stage"
-    player_code: "player_code"
-    country_code: "country_code"
-    raid_wildcard_count: "raid_wildcard_count"
-    current_card_currency: "current_card_currency"
-    name: "name"
-    total_raid_player_xp: "total_raid_player_xp"
-    player_raid_level: "player_raid_level"
-    total_card_level: "total_card_level"
-    role: "role"
-    weekly_ticket_count: "weekly_ticket_count"
-    loyalty_level: "loyalty_level"
-    daily_raid_tickets: "daily_raid_tickets"
-    previous_rank: "previous_rank"
-    cards: "cards"
+    max_stage = "max_stage"
+    player_code = "player_code"
+    country_code = "country_code"
+    raid_wildcard_count = "raid_wildcard_count"
+    current_card_currency = "current_card_currency"
+    name = "name"
+    total_raid_player_xp = "total_raid_player_xp"
+    player_raid_level = "player_raid_level"
+    total_card_level = "total_card_level"
+    role = "role"
+    weekly_ticket_count = "weekly_ticket_count"
+    loyalty_level = "loyalty_level"
+    daily_raid_tickets = "daily_raid_tickets"
+    previous_rank = "previous_rank"
+    cards = "cards"
+
+    @classmethod
+    def all(cls) -> tuple['ClanDataProperties', ...]:
+        return cls._member_map_.values()
 
 
 class PlayerDataProperties(str, Enum):
