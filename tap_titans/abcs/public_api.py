@@ -32,7 +32,7 @@ class MasterTierLeaderboardPlacement(Struct):
 
 
 class MasterTierLeaderboard(Struct):
-    season_id: str
+    season_id: int
     leaderboard: tuple[MasterTierLeaderboardPlacement, ...]
 
 
