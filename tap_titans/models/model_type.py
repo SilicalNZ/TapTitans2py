@@ -131,6 +131,7 @@ class TargetStates(str, Enum):
     NoTarget = "0"
     Crossed = "1"
     Checked = "2"
+    Yellow = "3"
 
 
 class TargetStateParts(str, Enum):
