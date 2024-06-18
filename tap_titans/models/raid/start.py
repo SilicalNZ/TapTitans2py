@@ -37,7 +37,7 @@ class RaidStartRaidAreaBuff(Struct):
 class RaidStartRaidInfo(Raid):
     spawn_sequence: tuple[EnemyNames, ...]
     titans: tuple[RaidStartRaidTitan, ...]
-    area_buffs: tuple[RaidStartRaidAreaBuff, ...]
+    area_buffs: tuple[RaidStartRaidAreaBuff, ...] = field(default_factory=tuple)
 
 
 class RaidStartMoraleBonus(Struct):
