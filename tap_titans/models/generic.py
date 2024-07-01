@@ -10,6 +10,11 @@ class Player(Struct):
     player_code: PlayerCode
 
 
+class OptionalPlayer(Struct):
+    name: str | None = None
+    player_code: PlayerCode | None = None
+
+
 class RaidMorale(Struct):
     bonus_amount: float
     used: int
