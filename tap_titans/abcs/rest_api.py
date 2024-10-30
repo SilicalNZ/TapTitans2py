@@ -5,7 +5,7 @@ from enum import Enum
 from tap_titans.models.generic import ClanCode
 from tap_titans.abcs.error import UnknownError
 from tap_titans.utils.base import Struct
-from tap_titans.models.player import PlayerData
+from tap_titans.models.player import PlayerData, PlayerRaidResearchTree, PlayerCard
 
 
 __all__ = (
@@ -36,13 +36,6 @@ class SubscribeResp(Struct):
     refused: tuple[SubscribeRespRefused, ...]
 
 
-class PlayerCard(Struct):
-    level: int
-    quantity_received: int
-    quantity_spent: int
-    skill_name: str
-
-
 class ClanPlayerData(Struct):
     player_code: str | None
     country_code: str | None
@@ -52,12 +45,17 @@ class ClanPlayerData(Struct):
     name: str | None
     total_raid_player_xp: int | None
     player_raid_level: int | None
+    summon_level: int | None
     total_card_level: int | None
     role: str | None
     weekly_ticket_count: int | None
+    # titan_cards is excluded since it's a mistake by GameHive to include it and slows down the .all() by a lot
+    raid_research_tree: PlayerRaidResearchTree | None
     loyalty_level: int | None
     daily_raid_tickets: int | None
     previous_rank: str | None
+    summon_level: int | None
+    raid_research_tree: dict | None
     cards: tuple[PlayerCard, ...] | None
 
 
@@ -76,9 +74,11 @@ class ClanDataProperties(str, Enum):
     name = "name"
     total_raid_player_xp = "total_raid_player_xp"
     player_raid_level = "player_raid_level"
+    summon_level = "summon_level"
     total_card_level = "total_card_level"
     role = "role"
     weekly_ticket_count = "weekly_ticket_count"
+    raid_research_tree = "raid_research_tree"
     loyalty_level = "loyalty_level"
     daily_raid_tickets = "daily_raid_tickets"
     previous_rank = "previous_rank"
@@ -90,15 +90,16 @@ class ClanDataProperties(str, Enum):
 
 
 class PlayerDataProperties(str, Enum):
-    max_stage = "max_stage"
     player_code = "player_code"
     country_code = "country_code"
+    max_stage = "max_stage"
     crafting_shards_spent = "crafting_shards_spent"
     raid_wildcard_count = "raid_wildcard_count"
     current_card_currency = "current_card_currency"
     additive_relic_multiplier = "additive_relic_multiplier"
     relics_received = "relics_received"
     relics_spent = "relics_spent"
+    summon_level = "summon_level"
     name = "name"
     total_tournaments = "total_tournaments"
     undisputed_count = "undisputed_count"
@@ -118,6 +119,7 @@ class PlayerDataProperties(str, Enum):
     clan_name = "clan_name"
     role = "role"
     weekly_ticket_count = "weekly_ticket_count"
+    raid_research_tree = "raid_research_tree"
     loyalty_level = "loyalty_level"
     daily_raid_tickets = "daily_raid_tickets"
     previous_rank = "previous_rank"

@@ -50,47 +50,74 @@ class PlayerSkill(Struct):
     skill_id: str
 
 
+class PlayerTitanCard(Struct):
+    titan_id: str
+    level: int
+    quantity_received: int
+    quantity_spent: int
+
+
+class PlayerRaidResearchTree(Struct):
+    armor_damage: float | None = field(name="ArmorDamage", default=None)
+    body_damage: float | None = field(name="BodyDamage", default=None)
+    chest_damage: float | None = field(name="ChestDamage", default=None)
+    head_damage: float | None = field(name="HeadDamage", default=None)
+    limb_damage: float | None = field(name="LimbDamage", default=None)
+    raid_enemy_1_damage: float | None = field(name="RaidEnemy1Damage", default=None)
+    raid_enemy_2_damage: float | None = field(name="RaidEnemy2Damage", default=None)
+    raid_enemy_3_damage: float | None = field(name="RaidEnemy3Damage", default=None)
+    raid_enemy_4_damage: float | None = field(name="RaidEnemy4Damage", default=None)
+    raid_enemy_5_damage: float | None = field(name="RaidEnemy5Damage", default=None)
+    raid_enemy_6_damage: float | None = field(name="RaidEnemy6Damage", default=None)
+    raid_enemy_7_damage: float | None = field(name="RaidEnemy7Damage", default=None)
+    raid_enemy_8_damage: float | None = field(name="RaidEnemy8Damage", default=None)
+
+
 class PlayerData(Struct):
-    additive_relic_multiplier: int | None
-    artifacts: tuple[PlayerArtifact, ...] | None
-    badge_count: PlayerBadgeCount | None
-    cards: tuple[PlayerCard, ...] | None
-    challenge_tournaments_participation: int | None
-    challenge_tournaments_undisputed_count: int | None
-    clan_code: str | None
-    clan_name: str | None
-    clan_scroll: tuple[PlayerClanScroll, ...] | None
-    country_code: str | None
-    crafting_shards_spent: int | None
-    current_card_currency: int | None
-    current_world_id: int | None
-    daily_raid_tickets: int | None
-    equipment_set: tuple[str, ...] | None
-    equipment_set_count: int | None
-    hero_weapon: tuple[PlayerHeroWeapon, ...] | None
-    loyalty_level: int | None
-    max_stage: int | None
-    name: str | None
-    pets: tuple[PlayerPet, ...] | None
     player_code: str | None
-    player_raid_level: int | None
-    previous_rank: str | None
+    country_code: str | None
+    max_stage: int | None
+    crafting_shards_spent: int | None
     raid_wildcard_count: int | None
+    current_card_currency: int | None
+    additive_relic_multiplier: int | None
     relics_received: str | None
     relics_spent: str | None
-    role: str | None
-    seasonal_artifacts: tuple[PlayerSeasonalArtifact, ...] | None
-    seasonal_relic_multiplier: int | None
-    seasonal_relics_received: str | None
-    seasonal_relics_spent: str | None
-    skill_tree: tuple[PlayerSkill, ...] | None
-    titan_points: int | None
-    total_card_level: int | None
-    total_clan_scrolls: int | None
-    total_hero_weapons: int | None = field(name="total_helper_weapons")
-    total_pet_levels: int | None
-    total_raid_player_xp: int | None
-    total_skill_points: int | None
+    summon_level: int | None
+    name: str | None
     total_tournaments: int | None
     undisputed_count: int | None
+    titan_points: str | None
+    total_raid_player_xp: int | None
+    player_raid_level: int | None
+    total_card_level: int | None
+    equipment_set_count: int | None
+    total_pet_levels: int | None
+    total_skill_points: int | None
+    total_clan_scrolls: int | None
+    challenge_tournaments_participation: int | None
+    challenge_tournaments_undisputed_count: int | None
+    current_world_id: int | None
+    clan_code: str | None
+    clan_name: str | None
+    role: str | None
     weekly_ticket_count: int | None
+    titan_cards: tuple[PlayerTitanCard, ...] | None
+    raid_research_tree : PlayerRaidResearchTree | None
+    loyalty_level: int | None
+    daily_raid_tickets: int | None
+    previous_rank: str | None
+    artifacts: tuple[PlayerArtifact, ...] | None
+    seasonal_relics_received: str | None
+    seasonal_relics_spent: str | None
+    seasonal_relic_multiplier: int | None
+    seasonal_artifacts: tuple[PlayerSeasonalArtifact, ...] | None
+    cards: tuple[PlayerCard, ...] | None
+    pets: tuple[PlayerPet, ...] | None
+    badge_count: PlayerBadgeCount | None
+    hero_weapon: tuple[PlayerHeroWeapon, ...] | None
+    clan_scroll: tuple[PlayerClanScroll, ...] | None
+    skill_tree: tuple[PlayerSkill, ...] | None
+    equipment_set: tuple[str, ...] | None
+    # field() is a kwarg and must be defined last
+    total_hero_weapons: int | None = field(name="total_helper_weapons", default=None)
