@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from tap_titans.models import models
-from tap_titans.abcs.rest_api import ClanDataResp
+from tap_titans.abcs.rest_api import ClanDataResp, SubscribeResp
 
 
 class ModelTest(TestCase):
@@ -52,6 +52,9 @@ class ModelTest(TestCase):
 
     def test_clan_sync(self):
         models.clan_models.ClanSync.decode_json(_clan_sync)
+
+    def test_subscribe(self):
+        SubscribeResp.decode_json(_subscribe_data)
 
     def test_clan_data(self):
         ClanDataResp.decode_json(_clan_data)
@@ -506,6 +509,8 @@ _clan_leave = '''{"clan_code": "test", "player": {"name": "test", "player_code":
 _clan_join = '''{"clan_code": "test", "player": {"name": "test", "player_code": "test"}}'''
 
 _clan_sync = '''{"clan_code": "test", "clan_name": "test"}'''
+
+_subscribe_data = '''{"ok": [{"clan_code": "test", "clan_name": "test", "member_list": [{"name": "test", "player_code": "test"}], "token": "test"}], "refused": []}'''
 
 _clan_data = '''{"clan_code": "test","clan_name": "test","players_data": [{"cards": [{"level": 40,"quantity_received": 3083,"quantity_spent": 2785,"skill_name": "AstralEcho"},{"level": 37,"quantity_received": 4030,"quantity_spent": 3839,"skill_name": "BurningAttack"},{"level": 42,"quantity_received": 4368,"quantity_spent": 4077,"skill_name": "BurstBoost"},{"level": 33,"quantity_received": 3398,"quantity_spent": 3201,"skill_name": "BurstCount"},{"level": 41,"quantity_received": 2948,"quantity_spent": 2809,"skill_name": "CelestialStatic"},{"level": 38,"quantity_received": 3860,"quantity_spent": 3813,"skill_name": "ChainLightning"},{"level": 33,"quantity_received": 3308,"quantity_spent": 3286,"skill_name": "CrushingVoid"},{"level": 28,"quantity_received": 3260,"quantity_spent": 2963,"skill_name": "DecayingAttack"},{"level": 34,"quantity_received": 3424,"quantity_spent": 3234,"skill_name": "Disease"},{"level": 35,"quantity_received": 3558,"quantity_spent": 3275,"skill_name": "ExecutionersAxe"},{"level": 30,"quantity_received": 2830,"quantity_spent": 2828,"skill_name": "FinisherAttack"},{"level": 29,"quantity_received": 3185,"quantity_spent": 3133,"skill_name": "FlakShot"},{"level": 30,"quantity_received": 3070,"quantity_spent": 2744,"skill_name": "Fragmentize"},{"level": 31,"quantity_received": 3675,"quantity_spent": 3590,"skill_name": "Fuse"},{"level": 33,"quantity_received": 3833,"quantity_spent": 3513,"skill_name": "Haymaker"},{"level": 32,"quantity_received": 3418,"quantity_spent": 3418,"skill_name": "ImpactAttack"},{"level": 30,"quantity_received": 3064,"quantity_spent": 2751,"skill_name": "InnerTruth"},{"level": 28,"quantity_received": 3285,"quantity_spent": 3223,"skill_name": "LimbBurst"},{"level": 32,"quantity_received": 3480,"quantity_spent": 3445,"skill_name": "LimbSupport"},{"level": 49,"quantity_received": 2236,"quantity_spent": 2165,"skill_name": "MagicPotion"},{"level": 38,"quantity_received": 3937,"quantity_spent": 3642,"skill_name": "MentalFocus"},{"level": 45,"quantity_received": 4362,"quantity_spent": 4103,"skill_name": "MirrorForce"},{"level": 32,"quantity_received": 3516,"quantity_spent": 3499,"skill_name": "MoonBeam"},{"level": 34,"quantity_received": 3697,"quantity_spent": 3675,"skill_name": "PlagueAttack"},{"level": 25,"quantity_received": 2851,"quantity_spent": 2788,"skill_name": "PoisonAttack"},{"level": 32,"quantity_received": 2483,"quantity_spent": 2426,"skill_name": "PowerBubble"},{"level": 51,"quantity_received": 6141,"quantity_spent": 5749,"skill_name": "Purify"},{"level": 33,"quantity_received": 3781,"quantity_spent": 3691,"skill_name": "RazorWind"},{"level": 42,"quantity_received": 4847,"quantity_spent": 4655,"skill_name": "RuinousRust"},{"level": 31,"quantity_received": 2767,"quantity_spent": 2549,"skill_name": "RuneAttack"},{"level": 10,"quantity_received": 46,"quantity_spent": 14,"skill_name": "SandsOfTime"},{"level": 36,"quantity_received": 3692,"quantity_spent": 3416,"skill_name": "Shadow"},{"level": 28,"quantity_received": 3176,"quantity_spent": 3084,"skill_name": "SkullBash"},{"level": 37,"quantity_received": 3831,"quantity_spent": 3786,"skill_name": "SpinalTap"},{"level": 33,"quantity_received": 3593,"quantity_spent": 3374,"skill_name": "SuperheatMetal"},{"level": 30,"quantity_received": 2975,"quantity_spent": 2754,"skill_name": "Swarm"},{"level": 36,"quantity_received": 4052,"quantity_spent": 3721,"skill_name": "TeamTactics"},{"level": 50,"quantity_received": 6060,"quantity_spent": 5791,"skill_name": "TotemFairySkill"},{"level": 32,"quantity_received": 1214,"quantity_spent": 934,"skill_name": "TriangleSupport"},{"level": 28,"quantity_received": 72,"quantity_spent": 72,"skill_name": "Weaken"},{"level": 30,"quantity_received": 2944,"quantity_spent": 2831,"skill_name": "WhipOfLightning"}],"country_code": "UX","current_card_currency": 0,"daily_raid_tickets": 59217,"loyalty_level": 12,"max_stage": 365192,"name": "[TTU] Silical","player_code": "test","player_raid_level": 966,"previous_rank": "0.3829","raid_research_tree": {"ArmorDamage": 0.125,"ChestDamage": 0.1,"HeadDamage": 0.1,"LimbDamage": 0.1},"raid_wildcard_count": 3,"role": "CoLeader","summon_level": 218,"total_card_level": "1398","total_raid_player_xp": 1331387,"weekly_ticket_count": 198}]}'''
 

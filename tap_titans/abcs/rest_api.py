@@ -21,9 +21,16 @@ __all__ = (
 )
 
 
+class SubscribeRespOKMember(Struct):
+    name: str
+    player_code: str
+
+
 class SubscribeRespOK(Struct):
     token: str
     clan_code: ClanCode
+    clan_name: str
+    member_list: list[SubscribeRespOKMember]
 
 
 class SubscribeRespRefused(Struct):
