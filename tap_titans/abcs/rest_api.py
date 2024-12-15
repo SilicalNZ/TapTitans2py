@@ -4,8 +4,8 @@ from enum import Enum
 
 from tap_titans.models.generic import ClanCode
 from tap_titans.abcs.error import UnknownError
-from tap_titans.utils.base import Struct
-from tap_titans.models.player import PlayerData, PlayerRaidResearchTree, PlayerCard
+from tap_titans.utils.base import Struct, field
+from tap_titans.models.player import PlayerData, PlayerRaidResearchTree, PlayerCard, PlayerRaidResearchBonuses
 
 
 __all__ = (
@@ -44,26 +44,26 @@ class SubscribeResp(Struct):
 
 
 class ClanPlayerData(Struct):
-    player_code: str | None
-    country_code: str | None
-    max_stage: int | None
-    raid_wildcard_count: int | None
-    current_card_currency: int | None
-    name: str | None
-    total_raid_player_xp: int | None
-    player_raid_level: int | None
-    summon_level: int | None
-    total_card_level: int | None
-    role: str | None
-    weekly_ticket_count: int | None
+    player_code: str | None = field(default=None)
+    country_code: str | None = field(default=None)
+    max_stage: int | None = field(default=None)
+    raid_wildcard_count: int | None = field(default=None)
+    current_card_currency: int | None = field(default=None)
+    name: str | None = field(default=None)
+    total_raid_player_xp: int | None = field(default=None)
+    player_raid_level: int | None = field(default=None)
+    summon_level: int | None = field(default=None)
+    total_card_level: int | None = field(default=None)
+    role: str | None = field(default=None)
+    weekly_ticket_count: int | None = field(default=None)
     # titan_cards is excluded since it's a mistake by GameHive to include it and slows down the .all() by a lot
-    raid_research_tree: PlayerRaidResearchTree | None
-    loyalty_level: int | None
-    daily_raid_tickets: int | None
-    previous_rank: str | None
-    summon_level: int | None
-    raid_research_tree: dict | None
-    cards: tuple[PlayerCard, ...] | None
+    raid_research_tree: PlayerRaidResearchTree | None = field(default=None)
+    raid_research_bonuses: PlayerRaidResearchBonuses | None = field(default=None)
+    loyalty_level: int | None = field(default=None)
+    daily_raid_tickets: int | None = field(default=None)
+    previous_rank: str | None = field(default=None)
+    summon_level: int | None = field(default=None)
+    cards: tuple[PlayerCard, ...] | None = field(default=None)
 
 
 class ClanDataResp(Struct):
@@ -85,7 +85,9 @@ class ClanDataProperties(str, Enum):
     total_card_level = "total_card_level"
     role = "role"
     weekly_ticket_count = "weekly_ticket_count"
+    # titan_cards is excluded since it's a mistake by GameHive to include it and slows down the .all() by a lot
     raid_research_tree = "raid_research_tree"
+    raid_research_bonuses = "raid_research_bonuses"
     loyalty_level = "loyalty_level"
     daily_raid_tickets = "daily_raid_tickets"
     previous_rank = "previous_rank"
@@ -126,7 +128,9 @@ class PlayerDataProperties(str, Enum):
     clan_name = "clan_name"
     role = "role"
     weekly_ticket_count = "weekly_ticket_count"
+    titan_cards = "titan_cards"
     raid_research_tree = "raid_research_tree"
+    raid_research_bonuses = "raid_research_bonuses"
     loyalty_level = "loyalty_level"
     daily_raid_tickets = "daily_raid_tickets"
     previous_rank = "previous_rank"
@@ -167,6 +171,3 @@ class RestAPIABC(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     async def player_data(self, player_token: str, properties: tuple[PlayerDataProperties, ...]) -> PlayerData | UnknownError:
         raise NotImplementedError()
-
-
-RaidRestABC = RestAPIABC  # Deprecated
