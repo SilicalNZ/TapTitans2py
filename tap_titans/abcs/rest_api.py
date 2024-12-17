@@ -64,6 +64,7 @@ class ClanPlayerData(Struct):
     previous_rank: str | None = field(default=None)
     summon_level: int | None = field(default=None)
     cards: tuple[PlayerCard, ...] | None = field(default=None)
+    equipment_set: tuple[str, ...] | None = field(default=None)
 
 
 class ClanDataResp(Struct):
@@ -92,6 +93,7 @@ class ClanDataProperties(str, Enum):
     daily_raid_tickets = "daily_raid_tickets"
     previous_rank = "previous_rank"
     cards = "cards"
+    equipment_set = "equipment_set"
 
     @classmethod
     def all(cls) -> tuple['ClanDataProperties', ...]:

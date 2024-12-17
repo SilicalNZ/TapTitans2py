@@ -284,6 +284,14 @@ class EquipmentSets(str, Enum):
     Rogue = "Rogue"
 
 
+class RaidEquipmentSets(str, Enum):
+    RaidCaptain = "RaidCaptain"
+    Jade = "Jade"
+    SoloRaid = "SoloRaid"
+    RaidMythic = "RaidMythic"
+    FirstMate = "FirstMate"
+
+
 class HeroWeapons(str, Enum):
     H01 = "H01"
     H02 = "H02"
