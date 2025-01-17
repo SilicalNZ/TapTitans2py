@@ -17,6 +17,7 @@ class TitanCursedDebuff(Struct):
 class RaidStartRaidTitanPart(Struct):
     part_id: TitanParts
     total_hp: float
+    current_hp: float
     cursed: bool = False
 
 
@@ -24,6 +25,7 @@ class RaidStartRaidTitan(Struct):
     enemy_name: EnemyNames
     enemy_id: EnemyIDs
     total_hp: float
+    current_hp: float
     parts: tuple[RaidStartRaidTitanPart, ...]
     area_debuffs: tuple[TitanAreaDebuff, ...] = field(default_factory=tuple)
     cursed_debuffs: tuple[TitanCursedDebuff, ...] = field(default_factory=tuple)
