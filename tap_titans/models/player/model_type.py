@@ -304,6 +304,7 @@ class EquipmentSets(str, Enum):
     Mummy = "Mummy"
     Tropical = "Tropical"
     Bartender = "Bartender"
+    Fortress = "Fortress"
 
 
 class RaidEquipmentSets(str, Enum):
