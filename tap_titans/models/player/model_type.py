@@ -305,6 +305,13 @@ class EquipmentSets(str, Enum):
     Tropical = "Tropical"
     Bartender = "Bartender"
     Fortress = "Fortress"
+    MythicSmith = "MythicSmith"
+    Scorpion = "Scorpion"
+    Airforce = "Airforce"
+    Moth = "Moth"
+    Valkyrie = "Valkyrie"
+    Sandstone = "Sandstone"
+    Teddy = "Teddy"
 
 
 class RaidEquipmentSets(str, Enum):
