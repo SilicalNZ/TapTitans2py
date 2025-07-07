@@ -61,10 +61,17 @@ class ClanPlayerData(Struct):
     raid_research_bonuses: PlayerRaidResearchBonuses | None = field(default=None)
     loyalty_level: int | None = field(default=None)
     daily_raid_tickets: int | None = field(default=None)
-    previous_rank: str | None = field(default=None)
+    _previous_rank: str | float | None = field(name="previous_rank", default=None) # This field is rarely a float, I think when it's a zero value.
     summon_level: int | None = field(default=None)
     cards: tuple[PlayerCard, ...] | None = field(default=None)
     equipment_set: tuple[str, ...] | None = field(default=None)
+
+    @property
+    def previous_rank(self) -> str | None:
+        if self._previous_rank is None:
+            return None
+
+        return str(self._previous_rank)
 
 
 class ClanDataResp(Struct):
