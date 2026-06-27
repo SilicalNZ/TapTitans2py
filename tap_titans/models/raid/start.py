@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from tap_titans.models.generic import Player, ClanAddedRaidTarget, ClanCode, Raid, EnemyIDs, EnemyNames, TitanParts, TitanAreaTypes, TitanCurseTypes
+from tap_titans.models.generic import Player, ClanAddedRaidTarget, ClanCode, Raid, EnemyIDs, EnemyNames, TitanParts, TitanCurseTypes
 from tap_titans.utils.base import Struct, field
 
 
 class TitanAreaDebuff(Struct):
-    bonus_type: TitanAreaTypes
+    bonus_type: str # TitanAreaTypes
     bonus_amount: float
 
 
