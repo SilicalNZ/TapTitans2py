@@ -106,6 +106,8 @@ class Cards(str, Enum):
     SandsOfTime = "SandsOfTime"
     GuardBreak = "Weaken"
     ElectroZap = "CosmicBarb"
+    BattleDrums = "BattleDrums"
+    BarbedMorningStar = "BarbedMorningstar"
 
 
 class EnemyIDs(str, Enum):

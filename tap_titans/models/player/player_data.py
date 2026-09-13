@@ -24,6 +24,13 @@ class PlayerCard(Struct):
     skill_name: Card
 
 
+class PlayerBoostedCard(Struct):
+    slot_number: int
+    skill_name: Card
+    category: str
+    boost_level: int
+
+
 class PlayerClanScroll(Struct):
     level: int = field(name="Level")
     scroll_id: str = field(name="ScrollId")
@@ -144,8 +151,13 @@ class PlayerData(Struct):
     role: str | None = field(default=None)
     weekly_ticket_count: int | None = field(default=None)
     titan_cards: tuple[PlayerTitanCard, ...] | None = field(default=None)
+    boosted_cards: tuple[PlayerBoostedCard, ...] | None = field(default=None)
     raid_research_tree : PlayerRaidResearchTree | None = field(default=None)
     raid_research_bonuses: PlayerRaidResearchBonuses | None = field(default=None)
+    gemstone_research_tree_raid_bonuses: dict[str, int] | None = field(default=None)
+    gemstone_currency: int | None = field(default=None)
+    gemstone_research_points: int | None = field(default=None)
+    gemstone_num_pulls: int | None = field(default=None)
     loyalty_level: int | None = field(default=None)
     daily_raid_tickets: int | None = field(default=None)
     _previous_rank: str | float | None = field(name="previous_rank", default=None) # This field is rarely a float, I think when it's a zero value.
